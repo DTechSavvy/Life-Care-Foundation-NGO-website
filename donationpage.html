@@ -1,18 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="donation.css">
-    </head>
-    <body>
-        <section class="donationform">
-            <h1 style="color: red; font-family: sans-serif;" >
-                Donate To Our Cause!
-            </h1>
-            <label for="name">Full Name:</label>
-            
-        </section>
-    </body>
-</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your NGO - Make a Donation</title>
+    <link rel="stylesheet" href="/donationstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="ngo-logo-placeholder.png" alt="NGO Logo">
+            </div>
+            <h1>Make a Difference, Donate Today</h1>
+            <p>Your contribution can bring hope and change.</p>
+        </div>
+    </header>
 
+    <section id="hero">
+        <div class="hero-content">
+            <h2>Empowering Communities, One Donation at a Time</h2>
+            <p>Join us in our mission to create a better world for those in need. Every donation, big or small, makes a significant impact.</p>
+            <button class="donate-button hero-button" data-campaign="general">Donate Now</button>
+        </div>
+    </section>
+
+    <section id="campaigns">
+        <h2>Featured Campaigns - Medical Emergencies</h2>
+        <div class="campaign-slider">
+            <div class="campaign-block">
+                <img src="campaign-image-1.jpg" alt="Campaign 1">
+                <h3>Urgent Medical Appeal for Little Aisha</h3>
+                <p>Aisha is battling a severe heart condition and needs immediate surgery to survive.</p>
+                <div class="campaign-details">
+                    <p><strong>Beneficiary:</strong> Aisha Khan, 5 years old</p>
+                    <p><strong>Emergency:</strong> Congenital Heart Defect</p>
+                    <p><strong>Last Date to Donate:</strong> March 25, 2025</p>
+                </div>
+                <button class="donate-button" data-campaign="aisha-medical">Donate Now</button>
+            </div>
+            <div class="campaign-block">
+                <img src="campaign-image-2.jpg" alt="Campaign 2">
+                <h3>Help Mr. Sharma Fight Kidney Failure</h3>
+                <p>Mr. Sharma urgently requires a kidney transplant to regain his health and live a normal life.</p>
+                <div class="campaign-details">
+                    <p><strong>Beneficiary:</strong> Mr. Rajesh Sharma, 58 years old</p>
+                    <p><strong>Emergency:</strong> End-Stage Renal Failure</p>
+                    <p><strong>Last Date to Donate:</strong> April 10, 2025</p>
+                </div>
+                <button class="donate-button" data-campaign="sharma-kidney">Donate Now</button>
+            </div>
+            <div class="campaign-block">
+                <img src="campaign-image-3.jpg" alt="Campaign 3">
+                <h3>Support Baby Fatima's Cancer Treatment</h3>
+                <p>Baby Fatima is fighting Leukemia and needs chemotherapy and supportive care.</p>
+                <div class="campaign-details">
+                    <p><strong>Beneficiary:</strong> Fatima Khan, 2 years old</p>
+                    <p><strong>Emergency:</strong> Acute Lymphoblastic Leukemia</p>
+                    <p><strong>Last Date to Donate:</strong> March 30, 2025</p>
+                </div>
+                <button class="donate-button" data-campaign="fatima-cancer">Donate Now</button>
+            </div>
+            <div class="campaign-block">
+                <img src="campaign-image-4.jpg" alt="Campaign 4">
+                <h3>Emergency Fund for Accident Victim, Rohan</h3>
+                <p>Rohan needs multiple surgeries and rehabilitation after a serious road accident.</p>
+                 <div class="campaign-details">
+                    <p><strong>Beneficiary:</strong> Rohan Verma, 32 years old</p>
+                    <p><strong>Emergency:</strong> Multiple Traumatic Injuries</p>
+                    <p><strong>Last Date to Donate:</strong> April 5, 2025</p>
+                </div>
+                <button class="donate-button" data-campaign="rohan-accident">Donate Now</button>
+            </div>
+            <div class="campaign-block">
+                <img src="campaign-image-5.jpg" alt="Campaign 5">
+                <h3>Help Mrs. Patel with Critical COVID-19 Treatment</h3>
+                <p>Mrs. Patel is in intensive care battling severe complications from COVID-19.</p>
+                <div class="campaign-details">
+                    <p><strong>Beneficiary:</strong> Mrs. Smita Patel, 65 years old</p>
+                    <p><strong>Emergency:</strong> Severe COVID-19 Pneumonia</p>
+                    <p><strong>Last Date to Donate:</strong> March 20, 2025</p>
+                </div>
+                <button class="donate-button" data-campaign="patel-covid">Donate Now</button>
+            </div>
+            </div>
+    </section>
+
+
+    <div id="donate-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-button">&times;</span>
+            <h2>Donation Details</h2>
+            <form id="donation-form">
+                <div class="form-group">
+                    <label for="donor-name">Name:</label>
+                    <input type="text" id="donor-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="donor-email">Email:</label>
+                    <input type="email" id="donor-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="donor-phone">Phone No:</label>
+                    <input type="tel" id="donor-phone">
+                </div>
+                <div class="form-group">
+                    <label for="donation-amount">Donation Amount (₹):</label>
+                    <input type="number" id="donation-amount" required>
+                    <div class="amount-options">
+                        <button type="button" class="amount-button">₹100</button>
+                        <button type="button" class="amount-button">₹500</button>
+                        <button type="button" class="amount-button">₹1000</button>
+                        <button type="button" class="amount-button">₹5000</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="recurring-donation">Recurring Donation:</label>
+                    <input type="checkbox" id="recurring-donation"> <small>(Monthly)</small>
+                </div>
+                <div class="form-group">
+                    <label>Payment Gateway (UPI):</label>
+                    <p>You will be redirected to a secure UPI payment gateway.</p>
+                </div>
+                <button type="submit" class="submit-button">Proceed to Donate</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="/javascripts/donation.js"></script>
+</body>
+</html>

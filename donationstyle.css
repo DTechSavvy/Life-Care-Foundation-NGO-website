@@ -1,0 +1,361 @@
+/* style.css */
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6; /* Slightly smaller line height */
+}
+
+/* Header Styles */
+header {
+    background: #ff5e62;
+    color: white;
+    padding: 2em 0; /* Slightly smaller header padding */
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Slightly smaller shadow */
+}
+
+.header-content {
+    max-width: 1100px; /* Slightly smaller max width */
+    margin: 0 auto;
+    padding: 0 1.5em; /* Slightly smaller side padding */
+}
+
+.logo img {
+    max-width: 100px; /* Slightly smaller logo size */
+    height: auto;
+    margin-bottom: 0.8em; /* Slightly smaller bottom margin */
+}
+
+header h1 {
+    font-size: 2.4em; /* Smaller heading font size */
+    margin-bottom: 0.3em; /* Slightly smaller bottom margin */
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.2); /* Even smaller text shadow */
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+header p {
+    font-size: 1.2em; /* Smaller paragraph font size */
+    opacity: 0.9;
+    font-weight: 600;
+}
+
+/* Hero Section */
+#hero {
+    background-color: #fff;
+    padding: 4em 0; /* Smaller hero padding */
+    text-align: center;
+    background-image: url('hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6); /* Slightly smaller text shadow */
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px; /* Slightly less rounded corners */
+    margin: 0.8em 1.5em; /* Smaller margin around hero */
+}
+
+/* Darker overlay for better text contrast */
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 12px; /* Match hero section border-radius */
+}
+
+.hero-content {
+    max-width: 900px; /* Slightly smaller max width */
+    margin: 0 auto;
+    padding: 2.5em 1.5em; /* Smaller hero content padding */
+    position: relative;
+    z-index: 1;
+}
+
+
+#hero h2 {
+    font-size: 3em; /* Smaller hero heading font size */
+    color: white;
+    margin-bottom: 0.4em; /* Slightly smaller bottom margin */
+    font-weight: 900;
+    letter-spacing: -0.04em; /* Slightly smaller letter spacing */
+}
+
+#hero p {
+    font-size: 1.3em; /* Smaller hero paragraph font size */
+    opacity: 0.9;
+    margin-bottom: 2em; /* Smaller bottom margin */
+    font-weight: 500;
+}
+
+.hero-button {
+    padding: 1em 3em; /* Smaller hero button padding */
+    font-size: 1.2em; /* Smaller hero button font size */
+    background-color: #ff8a5c;
+    border-radius: 9px; /* Slightly less rounded corners */
+    font-weight: 700;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Slightly smaller shadow */
+}
+
+
+/* Campaigns Section */
+#campaigns {
+    background-color: #f9f9f9;
+    padding: 3.5em 0; /* Slightly smaller section padding */
+}
+
+#campaigns h2 {
+    text-align: center;
+    color: #3ab7bf;
+    margin-bottom: 1.8em; /* Slightly smaller bottom margin */
+    font-size: 2.2em; /* Smaller section title font size */
+    font-weight: 800;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1); /* Even smaller text shadow */
+}
+
+.campaign-slider {
+    display: flex;
+    overflow-x: auto;
+    padding: 1.5em 1.5em; /* Smaller slider padding */
+    gap: 2em; /* Slightly smaller gap */
+    max-width: 1100px; /* Slightly smaller max width */
+    margin: 0 auto;
+}
+
+.campaign-block {
+    background-color: white;
+    border-radius: 10px; /* Slightly less rounded corners */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Slightly smaller shadow */
+    padding: 1.8em; /* Slightly smaller block padding */
+    text-align: center;
+    flex: 0 0 320px; /* Slightly narrower campaign blocks */
+    border-top: 5px solid #3ab7bf;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campaign-block:hover {
+    transform: translateY(-4px); /* Slightly smaller lift effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Slightly smaller shadow on hover */
+}
+
+
+.campaign-block img {
+    max-width: 95%; /* Slightly smaller image */
+    height: auto;
+    border-radius: 9px; /* Slightly less rounded corners */
+    margin-bottom: 1em; /* Slightly smaller bottom margin */
+}
+
+.campaign-block h3 {
+    color: #3498db;
+    margin-bottom: 0.7em; /* Slightly smaller bottom margin */
+    font-size: 1.3em; /* Smaller block title font size */
+    font-weight: 700;
+}
+
+.campaign-block p {
+    color: #555;
+    font-size: 1em;
+}
+
+
+/* Buttons */
+.donate-button, .submit-button, .amount-button {
+    background-color: #7ac142;
+    color: white;
+    border: none;
+    padding: 1em 2em; /* Smaller button padding */
+    border-radius: 8px; /* Slightly less rounded corners */
+    cursor: pointer;
+    font-size: 1.1em; /* Smaller button font size */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Slightly smaller shadow */
+    font-weight: 700;
+}
+
+.donate-button:hover, .submit-button:hover, .amount-button:hover {
+    background-color: #5cb85c;
+    transform: translateY(-2px); /* Even smaller lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly smaller shadow on hover */
+}
+
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.65); /* Slightly less dark overlay */
+}
+
+.popup-content {
+    background-color: #fff;
+    margin: 9% auto; /* Slightly adjusted top margin */
+    padding: 2em; /* Smaller popup padding */
+    border: none;
+    width: 82%; /* Slightly narrower popup */
+    max-width: 580px; /* Slightly narrower max width */
+    border-radius: 11px; /* Slightly less rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Slightly smaller shadow */
+    position: relative;
+}
+
+.popup-content h2 {
+    color: #ff5e62;
+    text-align: center;
+    margin-bottom: 1.6em; /* Slightly smaller bottom margin */
+    font-size: 1.8em; /* Smaller popup title font size */
+    font-weight: 800;
+}
+
+
+.close-button {
+    color: #777;
+    position: absolute;
+    top: 12px; /* Slightly lower top position */
+    right: 17px; /* Slightly more to the left right position */
+    font-size: 32px; /* Smaller close button font size */
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #555;
+    text-decoration: none;
+    opacity: 1;
+}
+
+.form-group {
+    margin-bottom: 1.6em; /* Slightly smaller form group margin */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.7em;
+    font-weight: 700;
+    color: #444;
+    font-size: 1em; /* Smaller label font size */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 0.9em; /* Smaller input padding */
+    border: 2px solid #e0e0e0;
+    border-radius: 7px; /* Slightly less rounded corners */
+    box-sizing: border-box;
+    font-size: 1em; /* Smaller input font size */
+    color: #444;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="number"]:focus {
+    border-color: #3ab7bf;
+    outline: none;
+    box-shadow: 0 0 4px rgba(58, 183, 191, 0.5); /* Even smaller focus shadow */
+}
+
+
+.amount-options {
+    display: flex;
+    gap: 0.9em; /* Slightly smaller gap */
+    margin-top: 0.9em; /* Slightly smaller top margin */
+    justify-content: center;
+}
+
+.amount-button {
+    padding: 0.9em 2em; /* Smaller amount button padding */
+    font-size: 1em; /* Smaller amount button font size */
+    border-radius: 7px; /* Slightly less rounded corners */
+    font-weight: 600;
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 1.8em 0; /* Slightly smaller header padding on small screens */
+    }
+    header h1 {
+        font-size: 2em; /* Smaller heading font size on small screens */
+    }
+    header p {
+        font-size: 1em; /* Smaller paragraph font size on small screens */
+    }
+    .logo img {
+        max-width: 90px; /* Even smaller logo on small screens */
+    }
+    #hero {
+        padding: 3.5em 0; /* Smaller hero padding on small screens */
+        margin: 0.8em; /* Even smaller side margin on small screens */
+    }
+    #hero h2 {
+        font-size: 2.2em; /* Smaller hero heading font size on small screens */
+    }
+    #hero p {
+        font-size: 1.1em; /* Smaller hero paragraph font size on small screens */
+    }
+    .hero-button {
+        padding: 0.9em 2.2em; /* Smaller hero button padding on small screens */
+        font-size: 1.1em; /* Smaller hero button font size on small screens */
+    }
+    #campaigns {
+        padding: 2.5em 0; /* Smaller campaign section padding on small screens */
+    }
+    #campaigns h2 {
+        font-size: 1.8em; /* Smaller campaign section title font size on small screens */
+    }
+    .campaign-slider {
+        padding: 0.8em; /* Even smaller slider padding on small screens */
+        gap: 1.5em; /* Smaller gap for vertical stacking on small screens */
+    }
+    .campaign-block {
+        padding: 1.5em; /* Even smaller block padding on small screens */
+        margin-bottom: 2em; /* Slightly smaller bottom margin for stacked blocks on small screens */
+    }
+    .campaign-block h3 {
+        font-size: 1.3em; /* Smaller block title font size on small screens */
+    }
+    .campaign-block p {
+        font-size: 0.95em; /* Even smaller block paragraph font size on small screens */
+    }
+
+    .popup-content {
+        width: 95%;
+        margin-top: 6%; /* Adjusted top margin for better popup position on small screens */
+        padding: 1.8em; /* Even smaller popup padding on small screens */
+    }
+    .popup-content h2 {
+        font-size: 1.6em; /* Smaller popup title font size on small screens */
+    }
+    .form-group {
+        margin-bottom: 1.3em; /* Slightly smaller form group margin on small screens */
+    }
+    .amount-options {
+        gap: 0.7em; /* Smaller gap for amount buttons on small screens */
+    }
+    .amount-button {
+        padding: 0.8em 1.8em; /* Even smaller amount button padding on small screens */
+        font-size: 0.95em; /* Even smaller amount button font size on small screens */
+    }
+}
