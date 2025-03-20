@@ -1,0 +1,895 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Root Variables */
+:root {
+    --themeRed: #e43a47;
+    --gray: #efefef;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+/* Global Styles */
+body,
+button {
+    font-family: "Poppins", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p {
+    font-size: 14px;
+    line-height: 26px;
+}
+
+.fullcontainer {
+    width: 100%;
+    min-height: auto;
+    position: relative;
+}
+
+.container {
+    width: 90%;
+    max-width: 1140px;
+    margin: auto;
+}
+
+.sectionTitle {
+    width: 300px;
+    border-bottom: 3px solid var(--themeRed);
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 200;
+    margin: 0 auto 50px;
+    position: relative;
+    padding: 10px 0;
+    text-transform: uppercase;
+}
+.sectionTitle::after {
+    display: inline-block;
+    content: "";
+    height: 15px;
+    width: 15px;
+    background-color: var(--themeRed);
+    position: absolute;
+    left: calc(50% - 10px);
+    top: calc(75% - 7px);
+    transform: rotate(45deg) translate(50%,50%);
+    border: 3px solid #fff;
+}
+
+/* Fixed the typo: 'centre content' should be '.center-content' */
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Slider Styles */
+/* Slider Container */
+/* Slider Container */
+/* General Styles */
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Swiper Slider */
+.swiper {
+    width: 100%;
+    height: 80vh; /* Reduced height (adjust if needed) */
+    margin-top: 80px; /* Ensures slider is below header */
+    position: relative;
+}
+
+/* Individual Slides */
+.swiper-slide {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images fit the slide */
+}
+
+/* Content Layer Styles */
+.slide-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 10; /* Ensure content is above the image */
+    animation: fadeIn 1s ease-in-out;
+}
+
+.slide-content h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    animation: fadeInDown 1.5s ease-in-out;
+}
+
+.slide-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+/* Button Styling */
+.slide-content a {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    background-color: #d43c18;
+    border: 2px solid #d43c18;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.slide-content a:hover {
+    color: #d43c18;
+    background-color: #fff;
+    border-color: #fff;
+    transform: scale(1.05);
+}
+
+/* PAGINATION */
+.swiper-pagination {
+    bottom: 15px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    opacity: 0.8;
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--themeRed);
+    transform: scale(1.4);
+    box-shadow: 0px 0px 8px rgba(255, 0, 0, 0.5);
+}
+
+/* NAVIGATION BUTTONS */
+.swiper-button-next,
+.swiper-button-prev {
+    color: white;
+    background: linear-gradient(135deg, #0a0f2c, #1b2a4e); /* Blackish-Blue Gradient */
+    width: 85px; /* Wider for a sleek look */
+    height: 70px; /* Taller for better balance */
+    border-radius: 0; /* Fully rectangular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px; /* Smaller icon size */
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(10, 15, 44, 0.4); /* Soft shadow */
+
+    /* Initially Invisible */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Prevent interaction when hidden */
+
+    /* Positioning */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Position Next & Prev Buttons */
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+/* Ensure the parent container allows hover */
+.swiper:hover .swiper-button-next,
+.swiper:hover .swiper-button-prev {
+    opacity: 1; /* Fully visible */
+    visibility: visible; /* Make it active */
+    pointer-events: auto; /* Enable interaction */
+}
+
+/* Hover Effect */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: linear-gradient(135deg, #1b2a4e, #0a0f2c);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(10, 15, 44, 0.6);
+}
+
+/* Click Effect */
+.swiper-button-next:active,
+.swiper-button-prev:active {
+    transform: scale(0.95);
+}
+
+/* Optional: Glow Effect on Hover */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    box-shadow: 0 0 15px rgba(27, 42, 78, 0.7);
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* Section Title */
+.sectionTitle {
+    width: fit-content;
+    border-bottom: 4px solid var(--themeRed);
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 0 auto 50px;
+    position: relative;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    color: #222; /* Darker shade for a richer look */
+    transition: all 0.3s ease-in-out;
+}
+
+.sectionTitle::after {
+    content: "";
+    height: 15px;
+    width: 15px;
+    background-color: var(--themeRed);
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border: 3px solid #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Subtle animation effect on hover */
+.sectionTitle:hover {
+    color: var(--themeRed);
+    transform: scale(1.05);
+}
+
+.sectionTitle:hover::after {
+    background-color: var(--gray);
+    border-color: var(--themeRed);
+}
+
+/* Section Styling */
+section {
+    padding: 100px 0;
+    position: relative;
+    background-color: #f8f9fa; /* Subtle light background */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Adds a subtle fade effect */
+section:hover {
+    background-color: #fff;
+}
+
+
+/* Header Styling */
+header {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures header is above all elements */
+    padding: 15px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Header Container */
+/* Header Styling */
+header {
+    width: 100%;
+    background: rgba(245, 245, 245, 0.5); /* Light grey with more transparency */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures header is above all elements */
+    padding: 5px 0; /* Reduced padding for a more compact header */
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added a shadow for better separation */
+}
+
+/* Ensure the content below the header isn't overlapped */
+body {
+    margin-top: 130px; /* Adjust this to be at least the new height of your header */
+}
+
+/* Header Container */
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1140px;
+    margin: auto;
+}
+
+/* Logo Styling */
+header .logo {
+    height: 120px; /* Keeps the logo size the same */
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 100%;
+    max-height: 100px; /* Keeps the logo size the same */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Navigation Menu */
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li {
+    display: inline-block;
+}
+
+header nav ul li a {
+    display: inline-block;
+    padding: 6px 12px; /* Keeps padding small but readable */
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 14px; /* Keeps the font size the same */
+    color: #333; /* Dark grey color for text */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover Effect */
+header nav ul li a:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Light background on hover */
+    color: var(--themeRed);
+}
+
+/* Adjustments for Sticky Header */
+header.scrolled {
+    background: rgba(245, 245, 245, 0.7); /* Slightly less transparent when scrolled */
+    padding: 5px 0; /* Reduced padding on scroll */
+    transition: background 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+    header .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul li {
+        width: 100%;
+    }
+
+    header nav ul li a {
+        display: block;
+        width: 100%;
+        padding: 8px 0;
+    }
+}
+
+/* Banner Section */
+
+.banner-content {
+    position: relative;
+    z-index: 2; /* Keeps text above the overlay */
+    color: #fff;
+    text-align: center;
+    padding-top: 150px; /* Adds spacing between header and content */
+}
+
+#activitysection .cards {
+    display: flex;
+    flex-wrap: nowrap; /* Prevents wrapping */
+    justify-content: space-between; /* Evenly distributes cards */
+    align-items: stretch; /* Ensures equal height */
+    margin-top: 50px;
+    gap: 20px; /* Adds spacing between cards */
+    overflow-x: hidden; /* Enables horizontal scrolling if needed */
+    padding-bottom: 10px;
+}
+
+/* Cards */
+#activitysection .cards > div {
+    flex: 1; /* Ensures equal width for all cards */
+    min-width: 250px;
+    max-width: 300px; /* Controls width without breaking layout */
+    background-color: var(--gray);
+    padding: 30px;
+    color: #444;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column; /* Aligns content properly */
+    justify-content: space-between; /* Ensures even spacing */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+#activitysection .cards > div:hover {
+    transform: scale(1.03); /* Enlarges smoothly */
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2); /* Adds depth effect */
+    border-color: var(--themeRed);
+}
+
+/* Card Title */
+#activitysection .cards > div .title {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--themeRed);
+}
+
+/* Card Text */
+#activitysection .cards > div p {
+    font-size: 14px;
+    margin-top: 15px;
+    line-height: 1.5;
+    flex-grow: 1; /* Allows the text to grow while keeping buttons aligned */
+}
+
+/* Button Styling */
+#activitysection .cards > div button {
+    border: 2px solid var(--themeRed);
+    background: transparent;
+    color: var(--themeRed);
+    outline: none;
+    padding: 8px 16px; /* Reduced padding for a smaller button */
+    margin-top: auto; /* Keeps buttons at the bottom */
+    font-size: 13px; /* Slightly smaller font */
+    border-radius: 25px; /* Softer, rounded edges */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    align-self: center; /* Centers button within the card */
+    font-weight: 500;
+}
+
+/* Hover Effect */
+#activitysection .cards > div:hover button {
+    background-color: var(--themeRed);
+    color: #fff;
+    border-color: var(--themeRed);
+    transform: scale(1.05); /* Slight pop effect */
+    box-shadow: 0px 5px 10px rgba(228, 58, 71, 0.3); /* Soft shadow effect */
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    #activitysection .cards {
+        flex-wrap: wrap; /* Enables scrolling on smaller screens */
+        justify-content: center; /* Aligns cards to start */
+    }
+
+    #activitysection .cards > div {
+        flex: 1 1 100%; /* Keeps cards from shrinking */
+    }
+}
+/*activity section ends*/
+/* Programs Section */
+.programs {
+    background-color: #f5f5f5;
+    padding: 60px 0;
+}
+
+/* Swiper Container */
+.programs .programs-slider {
+    overflow: hidden;
+}
+
+/* Box Styling */
+.programs .swiper-slide .box {
+    background-color: #fff;
+    text-align: center;
+    padding-bottom: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.programs .swiper-slide .box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Styling */
+.programs .swiper-slide .cardimage {
+    width: 100%;
+    height: 250px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    overflow: hidden;
+    transition: filter 0.3s ease, transform 0.3s ease;
+    filter: grayscale(100%);
+}
+
+/* Hover Effect - Remove Greyscale */
+.programs .swiper-slide:hover .cardimage {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* Assigning Unique Images to Each Card */
+.programs .swiper-slide:nth-child(1) .cardimage {
+    background-image: url('/images/programs/1.jpg');
+}
+.programs .swiper-slide:nth-child(2) .cardimage {
+    background-image: url('/images/programs/2.jpg');
+}
+.programs .swiper-slide:nth-child(3) .cardimage {
+    background-image: url('/images/programs/3.jpg');
+}
+.programs .swiper-slide:nth-child(4) .cardimage {
+    background-image: url('/images/programs/4.jpg');
+}
+.programs .swiper-slide:nth-child(5) .cardimage {
+    background-image: url('/images/programs/5.jpg');
+}
+.programs .swiper-slide:nth-child(6) .cardimage {
+    background-image: url('/images/programs/6.jpg');
+}
+.programs .swiper-slide:nth-child(7) .cardimage {
+    background-image: url('/images/programs/7.jpg');
+}
+
+/* Titles & Donation Goal */
+.programs .swiper-slide .programtitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #333;
+}
+
+.programs .swiper-slide .donationcount {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    margin-top: 10px;
+}
+
+.programs .swiper-slide .donationcount span {
+    color: #d43c18;
+}
+/* Progress Bar Container */
+/* Programs Section Styling */
+
+.progress-container {
+    width: 100%;
+    background: #e0e0e0;
+    border-radius: 20px;
+    height: 10px;
+    position: relative;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+/* Progress Bar */
+.progress-bar {
+    height: 100%;
+    background: #f26a4f;
+    border-radius: 20px;
+    width: 0;
+    transition: width 1.5s ease-in-out;
+}
+
+/* Progress Percentage Text */
+.progress-text {
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+    position: absolute;
+    left: 50%;
+    top: -20px;
+    transform: translateX(-50%);
+}
+
+/* Donation Count Styling */
+.donationcount {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    margin-top: 8px;
+}
+
+/* Fund Raised Amount Styling */
+.fund-raised {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+
+
+
+/* Button Styling */
+.programs .swiper-slide button {
+    position: relative;
+    bottom: 0;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    background: #d43c18;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+
+/* Button Hover Effect */
+.programs .swiper-slide button:hover {
+    background: white;
+    color: #d43c18;
+    border: 2px solid #d43c18;
+    transform: scale(1.05);
+}
+/* program section ends*/
+/*education section starts*/
+
+/* ======= Education Section ======= */
+.education {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+.education .videoPlayer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+}
+.education .sectionTitle {
+    color: #fff;
+    text-shadow: 0 0 4px #000;
+}
+.education .educationcontainer {
+    background-color: rgba(0, 0, 0, 0.7);
+    max-width: 500px; /* Made slightly smaller */
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 1.2s ease-in-out;
+    position: relative;
+    z-index: 2;
+}
+.education .educationcontainer h3 {
+    font-size: 1.8rem; /* Slightly smaller */
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.education .educationcontainer p {
+    font-size: 0.95rem; /* Made text more compact */
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+.education .educationcontainer button {
+    background-color: var(--themeRed);
+    border: none;
+    color: #fff;
+    padding: 10px 22px; /* Adjusted size */
+    font-weight: bold;
+    font-size: 14px;
+    outline: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Hover */
+.education .educationcontainer button:hover {
+    background-color: #fff;
+    color: var(--themeRed);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+/*education ends here */
+
+/*events starts here */
+/* Event Calendar Section */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+#event-calendar {
+    padding: 40px 0; /* Reduced padding for shorter section */
+    background: rgba(245, 245, 245, 0.6);
+    border-top: 2px solid #000;
+}
+
+#event-calendar .container {
+    width: 90%;
+    max-width: 1140px;
+    margin: auto;
+    text-align: center;
+}
+
+/* Event Grid - Two Events Per Row */
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px; /* Spacing between event cards */
+    margin-top: 20px;
+}
+
+/* Event Card Box Style */
+.event-card {
+    background: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ddd; /* Light border for box effect */
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Event Title */
+.event-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--themeRed);
+    margin-bottom: 6px;
+}
+
+.event-title a {
+    text-decoration: none;
+    color: var(--themeRed);
+    transition: color 0.3s ease;
+}
+
+.event-title a:hover {
+    color: #c0392b;
+}
+
+/* Short Summary */
+.event-summary {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Event Date */
+.event-date {
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+/* Countdown Timer */
+.event-timer {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.time-box {
+    background: var(--gray);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    min-width: 55px;
+}
+
+.time-box span {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--themeRed);
+}
+
+.time-box small {
+    font-size: 11px;
+    color: #555;
+}
+
+/* Event Description */
+.event-description {
+    font-size: 14px;
+    color: #444;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .event-grid {
+        grid-template-columns: 1fr; /* Stacks events on smaller screens */
+    }
+
+    .event-timer {
+        gap: 8px;
+    }
+
+    .time-box {
+        padding: 6px;
+        min-width: 50px;
+    }
+
+    .time-box span {
+        font-size: 16px;
+    }
+
+    .event-title {
+        font-size: 16px;
+    }
+}
+
+
+
+
+
+
+
