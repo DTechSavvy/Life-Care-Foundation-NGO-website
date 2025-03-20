@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color: #4CAF50;
+    background-color: #ee5154;
     color: white;
     padding: 10px 0;
     text-align: center;
@@ -56,27 +56,27 @@ main {
     display: inline-block;
     margin-top: 10px;
     padding: 8px 15px;
-    background-color: #4CAF50;
+    background-color: #ed536a;
     color: white;
     text-decoration: none;
     border-radius: 5px;
 }
 
 .read-more:hover {
-    background-color: #45a049;
+    background-color: #e14f57;
 }
 
 footer {
     text-align: center;
     padding: 10px 0;
-    background-color: #4CAF50;
+    background-color: #e04f6f;
     color: white;
     position: relative;
     bottom: 0;
     width: 100}
 
     .event-box {
-        border: 2px solid #4CAF50;
+        border: 2px solid #e94a4a;
         padding: 20px;
         background-color: #ffffff;
         border-radius: 8px;
@@ -85,7 +85,7 @@ footer {
     }
     
     .event-box h2 {
-        color: #4CAF50;
+        color: #e91e33;
         margin-bottom: 10px;
         font-size: 24px;
     }
@@ -97,7 +97,7 @@ footer {
     }
     
     .event-box button {
-        background-color: #4CAF50;
+        background-color: #db5252;
         color: white;
         padding: 10px 15px;
         border: none;
@@ -109,6 +109,6 @@ footer {
     }
     
     .event-box button:hover {
-        background-color: #45a049;
+        background-color: #e44747;
     }
     
