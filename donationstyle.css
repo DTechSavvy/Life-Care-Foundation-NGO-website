@@ -9,13 +9,31 @@ body {
 }
 
 /* Header Styles */
+/* ===== Sleek & Modern Header ===== */
 header {
-    background: #ff5e62;
-    color: white;
-    padding: 2em 0; /* Slightly smaller header padding */
+    background: linear-gradient(90deg, #1a1a2e, #16213e, #0f3460); /* Dark Navy to Deep Blue Gradient */
+    color: #ffffff;
+    padding: 20px 30px;
     text-align: center;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Slightly smaller shadow */
+    font-size: 1.0em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 10px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
 }
+
+/* Header Text Styling */
+header span {
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2); /* Subtle glow effect */
+}
+
+/* Smooth Hover Effect */
+header:hover {
+    background: linear-gradient(90deg, #0f3460, #16213e, #1a1a2e); /* Reverse gradient on hover */
+    transition: all 0.3s ease-in-out;
+}
+
 
 .header-content {
     max-width: 1100px; /* Slightly smaller max width */
@@ -44,64 +62,58 @@ header p {
 }
 
 /* Hero Section */
+/* Hero Section */
 #hero {
-    background-color: #fff;
-    padding: 4em 0; /* Smaller hero padding */
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* New vibrant gradient */
+    padding: 4em 0;
     text-align: center;
-    background-image: url('hero-background.jpg');
-    background-size: cover;
-    background-position: center;
     color: white;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6); /* Slightly smaller text shadow */
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px; /* Slightly less rounded corners */
-    margin: 0.8em 1.5em; /* Smaller margin around hero */
+    border-radius: 12px;
+    margin: 0.8em 1.5em;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
 }
 
-/* Darker overlay for better text contrast */
-#hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 12px; /* Match hero section border-radius */
-}
-
+/* Hero Content */
 .hero-content {
-    max-width: 900px; /* Slightly smaller max width */
+    max-width: 900px;
     margin: 0 auto;
-    padding: 2.5em 1.5em; /* Smaller hero content padding */
+    padding: 2.5em 1.5em;
     position: relative;
-    z-index: 1;
 }
 
-
+/* Hero Title */
 #hero h2 {
-    font-size: 3em; /* Smaller hero heading font size */
-    color: white;
-    margin-bottom: 0.4em; /* Slightly smaller bottom margin */
+    font-size: 3em;
+    margin-bottom: 0.5em;
     font-weight: 900;
-    letter-spacing: -0.04em; /* Slightly smaller letter spacing */
+    letter-spacing: -0.04em;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Improved readability */
 }
 
+/* Hero Description */
 #hero p {
-    font-size: 1.3em; /* Smaller hero paragraph font size */
-    opacity: 0.9;
-    margin-bottom: 2em; /* Smaller bottom margin */
+    font-size: 1.4em;
+    opacity: 0.95;
+    margin-bottom: 2em;
     font-weight: 500;
 }
 
+/* Hero Button */
 .hero-button {
-    padding: 1em 3em; /* Smaller hero button padding */
-    font-size: 1.2em; /* Smaller hero button font size */
-    background-color: #ff8a5c;
-    border-radius: 9px; /* Slightly less rounded corners */
+    padding: 1em 3em;
+    font-size: 1.3em;
+    background: #ff5e62; /* Brighter button */
+    border-radius: 10px;
     font-weight: 700;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Slightly smaller shadow */
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.hero-button:hover {
+    background: #ff3b45;
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
 
@@ -358,4 +370,134 @@ header p {
         padding: 0.8em 1.8em; /* Even smaller amount button padding on small screens */
         font-size: 0.95em; /* Even smaller amount button font size on small screens */
     }
+}
+
+.campaign-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures uniform spacing */
+    height: 100%; /* Makes all cards equal height */
+    padding: 1.8em;
+    border: 1px solid #ddd; /* Optional: Adds a border for consistency */
+    border-radius: 8px; /* Optional: Adds rounded corners */
+    background-color: #fff; /* Ensures uniform background */
+}
+
+.campaign-block p {
+    flex-grow: 1; /* Expands to fill available space, pushing the button down */
+}
+
+.donate-button {
+    margin-top: auto; /* Pushes the button to the bottom */
+    align-self: center; /* Centers the button */
+    width: 90%; /* Makes all buttons the same width */
+}
+
+/* ===== General Page Styling ===== */
+body {
+    background: linear-gradient(to right, #2c3e50, #34495e); /* Dark Grey-Blue Gradient */
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Page Wrapper ===== */
+.page-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* ===== Section Titles ===== */
+.section-title {
+    text-align: center;
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #ff8c00, #ff0080); /* Vibrant Sunset */
+    padding: 12px 25px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Campaign Card Styling ===== */
+.campaign-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 2em;
+    border-radius: 15px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* ===== Alternating Light & Vibrant Campaign Cards ===== */
+.campaign-block:nth-child(odd) {
+    background: linear-gradient(135deg, #fefae0, #fae1dd); /* Soft Cream to Light Pink */
+    color: #333;
+}
+.campaign-block:nth-child(even) {
+    background: linear-gradient(135deg, #d1e8e2, #a7c5eb); /* Soft Teal to Light Blue */
+    color: #222;
+}
+
+/* Hover Effect */
+.campaign-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Campaign Text ===== */
+.campaign-block p {
+    flex-grow: 1;
+    font-size: 1.2em;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* ===== Donate Button Styling ===== */
+.donate-button {
+    margin-top: auto;
+    align-self: center;
+    width: 90%;
+    padding: 12px 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Unique Button Colors */
+.campaign-block:nth-child(odd) .donate-button {
+    background-color: #ff8c00; /* Vibrant Orange */
+    color: #ffffff;
+}
+.campaign-block:nth-child(even) .donate-button {
+    background-color: #007acc; /* Bold Blue */
+    color: #ffffff;
+}
+
+/* Hover Effects */
+.donate-button:hover {
+    transform: scale(1.07);
+    opacity: 0.9;
+}
+
+/* ===== Footer Styling ===== */
+.footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 1.1em;
+    color: #ffffff;
+    background: linear-gradient(90deg, #ff8c00, #ff0080);
+    border-radius: 10px;
+    margin-top: 30px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
