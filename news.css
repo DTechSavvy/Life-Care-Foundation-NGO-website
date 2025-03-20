@@ -1,1 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
 
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.news-item {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.news-content {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.news-image {
+    flex: 0 0 300px; /* Fixed width for images */
+}
+
+.news-image img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.news-item h2 {
+    margin: 10px 0;
+    color: #333;
+}
+
+.date {
+    font-size: 0.9em;
+    color: #999;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.read-more:hover {
+    background-color: #45a049;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100}
+
+    .event-box {
+        border: 2px solid #4CAF50;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+    }
+    
+    .event-box h2 {
+        color: #4CAF50;
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+    
+    .event-box p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+    
+    .event-box button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+    
+    .event-box button:hover {
+        background-color: #45a049;
+    }
+    
