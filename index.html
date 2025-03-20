@@ -1,1 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Life Care Foundations</title>
+        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+        
+    </head>
+    <body>
+        <!-- Content -->
+         <div class="fullcontainer banner" id="homesection">
+        <header>
+           <div class="container">
+             <div class="logo">
+                <img src="/images/gallery/logo-removebg.png" alt="NGO logo" />
+             </div>
+             <nav>
+                <ul>
+                  <li>
+                    <a href="#homesection">Home</a>
+                  </li>
+                  <li>
+                    <a href="Javascript:void(0);">Features</a>
+                  </li>
+                  <li>
+                    <a href="Javascript:void(0);">Campagin</a>
+                  </li>
+                  <li>
+                    <a href="#educationsection">Education</a>
+                  </li>
+                  <li>
+                    <a href="Javascript:void(0);">News</a>
+                  </li>
+                  <li>
+                    <a href="/Login.html">Login</a>
+                  </li>
+                </ul>
+             </nav>
+           </div>
+        </header>
+
+        <div class="swiper">
+          <div class="swiper-wrapper">
+      
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <img src="/images/gallery/slide 1.jpg" alt="Slide 1">
+              <div class="slide-content">
+                <h1>Together We Can Save Lives</h1>
+                <p>Join us in our mission to bring hope and change.</p>
+                <a href="#donate">Donate Now</a>
+              </div>
+            </div>
+      
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+              <img src="/images/gallery/slide 2.jpg" alt="Slide 2">
+              <div class="slide-content">
+                <h1>Empowering Communities</h1>
+                <p>Together, we can make a difference.</p>
+                <a href="#features">Learn More</a>
+              </div>
+            </div>
+      
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+              <img src="/images/gallery/Slide 3.jpg" alt="Slide 3">
+              <div class="slide-content">
+                <h1>Education for All</h1>
+                <p>Support education initiatives to brighten futures.</p>
+                <a href="#education">Support Us</a>
+              </div>
+            </div>
+      
+            <!-- Slide 4 -->
+            <div class="swiper-slide">
+              <img src="/images/gallery/slide 4.jpg" alt="Slide 4">
+              <div class="slide-content">
+                <h1>Bringing Hope</h1>
+                <p>Be the reason someone smiles today.</p>
+                <a href="#gallery">Explore Gallery</a>
+              </div>
+            </div>
+      
+          </div>
+      
+          <!-- Pagination and Navigation -->
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      
+        <!-- Include Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+        <script>
+          const mainSwiper = new Swiper('.swiper', {
+            loop: true, // Enable infinite loop
+            autoplay: {
+              delay: 3000,
+              disableOnInteraction: false,
+            },
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+            },
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+            effect: 'fade', // Beautiful fade transition
+            fadeEffect: {
+              crossFade: true,
+            },
+          });
+        </script>
+         </div>
+
+
+         <section class="fullcontainer" id="activitysection" style="background-color: rgba(245, 245, 245, 0.6); border: 1px solid black;">
+          <div class="container">
+              <h2 class="sectionTitle">Activity</h2>
+              <p>
+                "True service is not about how much you give, but how much love and care you put into giving.It's about creating ripples of hope, transforming communities, and inspiring others to join hands in building a better world for all."
+              </p>
+              <div class="cards">
+                  <div class="donationbox">
+                      <div class="title">Give donation</div>
+                      <p>
+                          "Your generosity today empowers dreams for tomorrow. Make a difference with your donation."
+                      </p>
+                      <a href="donate.html"><button>Donate now</button></a>
+                  </div>
+      
+                  <div class="volunteerbox">
+                      <div class="title">Volunteer</div>
+                      <p>
+                          "Join us in making a positive change. Volunteer and be the light in someone’s life."
+                      </p>
+                      <a href="/volunteeringpage.html"><button>Become a volunteer</button></a>
+                  </div>
+      
+                  <div class="eventsbox">
+                      <div class="title">Events</div>
+                      <p>
+                          "Creating lasting memories through meaningful moments. Join our next event."
+                      </p>
+                      <a href="#event-calendar"><button>Read more</button></a>
+                  </div>
+      
+                  <div class="supportbox">
+                      <div class="title">Support</div>
+                      <p>
+                          "Got questions? Need support? We’re here to help. Reach out to us anytime."
+                      </p>
+                      <a href="/contact us.html"><button>Contact us</button></a>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!--about section ends here-->
+      <section class="programs" id="programssection">
+        <div class="container">
+            <h2 class="sectionTitle">Programs</h2>
+            <div class="swiper programs-slider">
+                <div class="swiper-wrapper">
+    
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="box">
+                            <div class="cardimage"></div>
+                            <div class="programtitle">Education to every child</div>
+                            <div class="donationcount">
+                                Goal: <span>₹700000</span> | Raised: <span class="fund-raised">$450,000</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" data-raised="450000" data-goal="700000"></div>
+                                <span class="progress-text">0%</span>
+                            </div>
+                            <a href="/donationpage.html">
+                            <button>Donate now</button>
+                            </a>
+                        </div>
+                    </div>
+    
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="box">
+                            <div class="cardimage"></div>
+                            <div class="programtitle">Make life easier for them</div>
+                            <div class="donationcount">
+                                Goal: <span>₹200000</span> | Raised: <span class="fund-raised">$450,000</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" data-raised="50000" data-goal="200000"></div>
+                                <span class="progress-text">0%</span>
+                            </div>
+                            <a href="/donationpage.html">
+                                <button>Donate now</button>
+                                </a>
+                        </div>
+                    </div>
+    
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="box">
+                            <div class="cardimage"></div>
+                            <div class="programtitle">Dedicating to helping kids</div>
+                            <div class="donationcount">
+                                Goal: <span>₹350000</span> | Raised: <span class="fund-raised">100000</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" data-raised="100000" data-goal="350000"></div>
+                                <span class="progress-text">0%</span>
+                            </div>
+                            <a href="/donationpage.html">
+                                <button>Donate now</button>
+                                </a>
+                        </div>
+                    </div>
+    
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="box">
+                            <div class="cardimage"></div>
+                            <div class="programtitle">Clean water for people</div>
+                            <div class="donationcount">
+                                Goal: <span>₹250000</span> | Raised: <span class="fund-raised">60000</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" data-raised="60000" data-goal="250000"></div>
+                                <span class="progress-text">0%</span>
+                            </div>
+                            <a href="/donationpage.html">
+                                <button>Donate now</button>
+                                </a>
+                        </div>
+                    </div>
+    
+                    <!-- Slide 5 -->
+                    <div class="swiper-slide">
+                        <div class="box">
+                            <div class="cardimage"></div>
+                            <div class="programtitle">Family support program</div>
+                            <div class="donationcount">
+                                Goal: <span>₹200000</span> | Raised: <span class="fund-raised">40000</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" data-raised="40000" data-goal="200000"></div>
+                                <span class="progress-text">0%</span>
+                            </div>
+                            <a href="/donationpage.html">
+                                <button>Donate now</button>
+                                </a>
+                        </div>
+                    </div>
+    
+                    <!-- Slide 6 -->
+                    <div class="swiper-slide">
+                        <div class="box">
+                            <div class="cardimage"></div>
+                            <div class="programtitle">Proper Elderly care</div>
+                            <div class="donationcount">
+                                Goal: <span>₹500000</span> | Raised: <span class="fund-raised">60000</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" data-raised="65000" data-goal="500000"></div>
+                                <span class="progress-text">0%</span>
+                            </div>
+                            <a href="/donationpage.html">
+                                <button>Donate now</button>
+                                </a>
+                        </div>
+                    </div>
+    
+                    <!-- Slide 7 -->
+                    <div class="swiper-slide">
+                        <div class="box">
+                            <div class="cardimage"></div>
+                            <div class="programtitle">Sponsor an orphan child</div>
+                            <div class="donationcount">
+                                Goal: <span>₹200000</span> | Raised: <span class="fund-raised">450000</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" data-raised="200000" data-goal="450000"></div>
+                                <span class="progress-text">0%</span>
+                            </div>
+                            <a href="/donationpage.html">
+                                <button>Donate now</button>
+                                </a>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <!-- Pagination & Navigation -->
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var swiper = new Swiper('.programs-slider', {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        loop: false,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            1200: { slidesPerView: 4 },
+            1024: { slidesPerView: 3 },
+            768: { slidesPerView: 2 },
+            480: { slidesPerView: 1 }
+        }
+    });
+
+    // Fix manual navigation returning to first slides
+    document.querySelector(".swiper-button-next").addEventListener("click", function () {
+        if (swiper.isEnd) {
+            swiper.slideTo(0, 500);
+        }
+    });
+
+    document.querySelector(".swiper-button-prev").addEventListener("click", function () {
+        if (swiper.isBeginning) {
+            swiper.slideTo(swiper.slides.length - 4, 500);
+        }
+    });
+
+    // ✅ Update Progress Bars & Fund Raised
+    document.querySelectorAll('.progress-bar').forEach(bar => {
+        let raised = parseInt(bar.getAttribute("data-raised"));
+        let goal = parseInt(bar.getAttribute("data-goal"));
+        let percentage = Math.round((raised / goal) * 100);
+
+        bar.style.width = percentage + "%";
+
+        // Selecting the correct text element (outside the bar)
+        let textElement = bar.parentElement.querySelector(".progress-text");
+        if (textElement) {
+            textElement.textContent = percentage + "% Raised";
+        }
+
+        // ✅ Update Fund Raised Amount
+        let fundRaisedElement = bar.closest(".box").querySelector(".fund-raised");
+        if (fundRaisedElement) {
+            fundRaisedElement.textContent = "₹" + raised.toLocaleString();
+        }
+    });
+});
+
+    </script>
+       
+     <!--programsection ends here-->
+
+    <!--education section starts here-->
+    <section class="education" id="educationsection">
+
+      <video autoplay muted loop class="videoPlayer">
+        <source src="/video/childrens1.mp4" type="video/mp4">
+        your browser does not support HTML5 video
+      </video>
+      <div class="container">
+        <div class="sectionTitle">Education</div>
+        <div class="educationcontainer">
+          <h3>
+            Education is esssential for <br>
+            <strong>BETTER FUTURE</strong>
+          </h3>
+          <p>
+            "Education is the most powerful tool we possess, transforming lives and futures with every lesson learned. It opens doors to endless opportunities, empowering individuals to break free from the chains of ignorance and poverty. By nurturing young minds today, we build a brighter, more compassionate world for tomorrow."
+          </p>
+          <button>Explore now</button>
+        </div>
+      </div>
+    </section>
+    <!--education section ends here-->
+    <!--timer section starts-->
+    <section id="event-calendar">
+        <div class="container">
+            <h2 class="sectionTitle">Upcoming Events</h2>
+    
+            <div class="event-grid">
+                <!-- Event 1 -->
+                <div class="event-card">
+                    <h3 class="event-title">
+                        <a href="#" class="event-link">Initial Volunteer Briefing</a>
+                    </h3>
+                    <p class="event-summary">Join us for an introductory session to help volunteers get started on their journey of making a difference!</p>
+                    <p class="event-date">📅 April 14, 2025 | 🕗 08:00 AM</p>
+                    <time class="event-timer" data-date="2025-04-14T08:00:00">
+                        <div class="time-box"><span class="days">DD</span><small>Days</small></div>
+                        <div class="time-box"><span class="hours">HH</span><small>Hours</small></div>
+                        <div class="time-box"><span class="minutes">MM</span><small>Mins</small></div>
+                        <div class="time-box"><span class="seconds">SS</span><small>Secs</small></div>
+                    </time>
+                </div>
+    
+                <!-- Event 2 -->
+                <div class="event-card">
+                    <h3 class="event-title">
+                        <a href="#" class="event-link">Empowerment Workshop</a>
+                    </h3>
+                    <p class="event-summary">A powerful session focused on skill development, self-confidence, and leadership training.</p>
+                    <p class="event-date">📅 May 20, 2025 | 🕙 10:30 AM</p>
+                    <time class="event-timer" data-date="2025-05-20T10:30:00">
+                        <div class="time-box"><span class="days">DD</span><small>Days</small></div>
+                        <div class="time-box"><span class="hours">HH</span><small>Hours</small></div>
+                        <div class="time-box"><span class="minutes">MM</span><small>Mins</small></div>
+                        <div class="time-box"><span class="seconds">SS</span><small>Secs</small></div>
+                    </time>
+                </div>
+    
+                <!-- Event 3 -->
+                <div class="event-card">
+                    <h3 class="event-title">
+                        <a href="#" class="event-link">Awareness Campaign</a>
+                    </h3>
+                    <p class="event-summary">Raising awareness on crucial social issues and promoting meaningful action.</p>
+                    <p class="event-date">📅 June 10, 2025 | 🕘 09:00 AM</p>
+                    <time class="event-timer" data-date="2025-06-10T09:00:00">
+                        <div class="time-box"><span class="days">DD</span><small>Days</small></div>
+                        <div class="time-box"><span class="hours">HH</span><small>Hours</small></div>
+                        <div class="time-box"><span class="minutes">MM</span><small>Mins</small></div>
+                        <div class="time-box"><span class="seconds">SS</span><small>Secs</small></div>
+                    </time>
+                </div>
+    
+                <!-- Event 4 -->
+                <div class="event-card">
+                    <h3 class="event-title">
+                        <a href="#" class="event-link">Inspire and Inform Summit</a>
+                    </h3>
+                    <p class="event-summary">A high-energy conference designed to inspire and educate individuals on leadership and innovation.</p>
+                    <p class="event-date">📅 July 05, 2025 | 🕦 11:45 AM</p>
+                    <time class="event-timer" data-date="2025-07-05T11:45:00">
+                        <div class="time-box"><span class="days">DD</span><small>Days</small></div>
+                        <div class="time-box"><span class="hours">HH</span><small>Hours</small></div>
+                        <div class="time-box"><span class="minutes">MM</span><small>Mins</small></div>
+                        <div class="time-box"><span class="seconds">SS</span><small>Secs</small></div>
+                    </time>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        function updateCountdowns() {
+            let timers = document.querySelectorAll(".event-timer");
+    
+            timers.forEach(timer => {
+                let eventTime = new Date(timer.getAttribute("data-date")).getTime();
+                let now = new Date().getTime();
+                let timeLeft = eventTime - now;
+    
+                if (timeLeft < 0) {
+                    timer.innerHTML = "<span>Event Started</span>";
+                    return;
+                }
+    
+                timer.querySelector(".days").textContent = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                timer.querySelector(".hours").textContent = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                timer.querySelector(".minutes").textContent = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                timer.querySelector(".seconds").textContent = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            });
+        }
+    
+        setInterval(updateCountdowns, 1000);
+        updateCountdowns();
+    </script>
+    
+  
+    </body>
+</html>
 
