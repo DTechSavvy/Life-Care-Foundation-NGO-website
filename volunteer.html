@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NGO Volunteering</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="volunteer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -51,7 +51,7 @@
                                 <span class="label">Secs</span>
                             </div>
                         </div>
-                        <button class="register-btn">Register Now</button>
+                        <button class="register-btn" onclick="openRegistrationModal('Initial Volunteer Briefing', 'April 14, 2025')">Register Now</button>
                     </div>
                 </div>
 
@@ -82,7 +82,7 @@
                                 <span class="label">Secs</span>
                             </div>
                         </div>
-                        <button class="register-btn">Register Now</button>
+                        <button class="register-btn" onclick="openRegistrationModal('Empowerment Workshop', 'May 20, 2025')">Register Now</button>
                     </div>
                 </div>
 
@@ -113,7 +113,7 @@
                                 <span class="label">Secs</span>
                             </div>
                         </div>
-                        <button class="register-btn">Register Now</button>
+                        <button class="register-btn" onclick="openRegistrationModal('Awareness Campaign', 'June 10, 2025')">Register Now</button>
                     </div>
                 </div>
 
@@ -144,7 +144,7 @@
                                 <span class="label">Secs</span>
                             </div>
                         </div>
-                        <button class="register-btn">Register Now</button>
+                        <button class="register-btn" onclick="openRegistrationModal('Inspire and Inform Summit', 'July 05, 2025')">Register Now</button>
                     </div>
                 </div>
             </div>
@@ -243,6 +243,64 @@
         <p>&copy; 2024 Life Care. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Event Registration</h2>
+            <div id="eventDetails" class="event-details">
+                <h3 id="modalEventTitle"></h3>
+                <p id="modalEventDate"></p>
+            </div>
+            <form id="registrationForm" class="registration-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" min="18" required>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Previous Volunteer Experience</label>
+                    <textarea id="experience" name="experience" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="availability">Availability (Hours per week)</label>
+                    <input type="number" id="availability" name="availability" min="1" max="40" required>
+                </div>
+                <div class="form-group">
+                    <label for="interests">Areas of Interest</label>
+                    <select id="interests" name="interests" multiple required>
+                        <option value="education">Education</option>
+                        <option value="environment">Environment</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="community">Community Development</option>
+                        <option value="social">Social Services</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="terms" required>
+                        I agree to the terms and conditions
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span>Submit Registration</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scriptvolunteering.js"></script>
 </body>
 </html> 
