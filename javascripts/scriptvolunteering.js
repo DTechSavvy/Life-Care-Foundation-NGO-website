@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Form Submission
+    // Contact Form Submission
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
@@ -105,15 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
             contactForm.reset();
         });
     }
-
-    // Register button functionality
-    const registerButtons = document.querySelectorAll('.register-btn');
-    registerButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const eventTitle = this.closest('.event-content').querySelector('h3').textContent;
-            alert(`Thank you for registering for ${eventTitle}! We will send you more details soon.`);
-        });
-    });
 
     // Add fade-in animation
     document.querySelectorAll('.event-card, .about-content, .contact-form').forEach(element => {
@@ -134,4 +125,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', fadeInOnScroll);
     fadeInOnScroll(); // Initial check
+
+    // Registration Modal Functionality
+    const modal = document.getElementById('registrationModal');
+    const closeModal = document.querySelector('.close-modal');
+    const registrationForm = document.getElementById('registrationForm');
+    const modalEventTitle = document.getElementById('modalEventTitle');
+    const modalEventDate = document.getElementById('modalEventDate');
+
+    // Function to open the registration modal
+    window.openRegistrationModal = function(eventTitle, eventDate) {
+        modal.style.display = 'block';
+        modalEventTitle.textContent = eventTitle;
+        modalEventDate.textContent = `Date: ${eventDate}`;
+    }
+
+    // Close modal when clicking the X button
+    closeModal.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Handle registration form submission
+    registrationForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(registrationForm);
+        const data = Object.fromEntries(formData.entries());
+        
+        // Add event details to the data
+        data.eventTitle = modalEventTitle.textContent;
+        data.eventDate = modalEventDate.textContent;
+        
+        // Here you would typically send the data to a server
+        console.log('Registration Data:', data);
+        
+        // Show success message
+        alert('Thank you for registering! We will contact you soon.');
+        
+        // Close modal and reset form
+        modal.style.display = 'none';
+        registrationForm.reset();
+    });
 }); 
