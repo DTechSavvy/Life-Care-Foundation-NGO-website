@@ -1,94 +1,217 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const donateButtons = document.querySelectorAll('.donate-button');
-    const donatePopup = document.getElementById('donate-popup');
-    const closeButton = document.querySelector('.close-button');
-    const amountButtons = document.querySelectorAll('.amount-button');
-    const donationAmountInput = document.getElementById('donation-amount');
-    const donationForm = document.getElementById('donation-form');
-    const campaignSlider = document.querySelector('.campaign-slider'); // For dynamic content
+// Global variables
+let currentSlide = 0
+let selectedAmount = 0
+let selectedCampaign = ""
 
-    donateButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            donatePopup.style.display = "block";
-            // You can add logic here to pre-fill campaign info in the popup if needed
-        });
-    });
+// Initialize when DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  // Set initial position of slider
+  updateSliderPosition()
+})
 
-    closeButton.addEventListener('click', () => {
-        donatePopup.style.display = "none";
-    });
+// Slider functionality
+function moveSlider(direction) {
+  const slider = document.querySelector(".campaign-slider")
+  const cards = document.querySelectorAll(".campaign-card")
+  const cardWidth = cards[0].offsetWidth + 30 // Card width + gap
 
-    window.addEventListener('click', (event) => {
-        if (event.target == donatePopup) {
-            donatePopup.style.display = "none";
-        }
-    });
+  // Update current slide
+  currentSlide += direction
 
-    amountButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            donationAmountInput.value = event.target.textContent.substring(1); // Remove '₹' and set value
-        });
-    });
+  // Limit boundaries
+  if (currentSlide < 0) currentSlide = 0
+  if (currentSlide > cards.length - 1) currentSlide = cards.length - 1
 
-    donationForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-        // Here you would typically handle form data submission
-        // For example, send data to a server, integrate with a payment gateway, etc.
-        const donorName = document.getElementById('donor-name').value;
-        const donorEmail = document.getElementById('donor-email').value;
-        const donorPhone = document.getElementById('donor-phone').value;
-        const donationAmount = donationAmountInput.value;
-        const recurringDonation = document.getElementById('recurring-donation').checked;
+  updateSliderPosition()
+}
 
-        console.log("Donation Form Data:", {
-            name: donorName,
-            email: donorEmail,
-            phone: donorPhone,
-            amount: donationAmount,
-            recurring: recurringDonation
-        });
+function updateSliderPosition() {
+  const slider = document.querySelector(".campaign-slider")
+  const cards = document.querySelectorAll(".campaign-card")
+  const cardWidth = cards[0].offsetWidth + 30 // Card width + gap
 
-        alert("Donation process initiated (details in console). In a real application, you would integrate with a payment gateway here.");
-        donatePopup.style.display = "none"; // Close popup after submission
-    });
+  // Calculate scroll position
+  const scrollPosition = currentSlide * cardWidth
 
-    // --- Dynamic Campaign Simulation (Frontend) ---
-    const campaignsData = [
-        {
-            image: 'campaign-image-4.jpg',
-            title: 'Clean Water Initiative',
-            description: 'Help us provide access to clean and safe drinking water in water-scarce regions.',
-            campaignId: 'water'
-        },
-        {
-            image: 'campaign-image-5.jpg',
-            title: 'Empower Women through Vocational Training',
-            description: 'Support skill-building programs for women to enhance their livelihoods.',
-            campaignId: 'women-empowerment'
-        },
-        // Add more campaign data objects here
-    ];
+  // Smooth scroll to position
+  slider.scrollTo({
+    left: scrollPosition,
+    behavior: "smooth",
+  })
+}
 
-    campaignsData.forEach(campaign => {
-        const campaignBlock = document.createElement('div');
-        campaignBlock.classList.add('campaign-block');
+// Donation form functionality
+function openDonateForm(campaign = "") {
+  const modal = document.getElementById("donate-modal")
+  const campaignNameElement = document.getElementById("campaign-name")
 
-        campaignBlock.innerHTML = `
-            <img src="${campaign.image}" alt="${campaign.title}">
-            <h3>${campaign.title}</h3>
-            <p>${campaign.description}</p>
-            <button class="donate-button" data-campaign="${campaign.campaignId}">Donate Now</button>
-        `;
-        campaignSlider.appendChild(campaignBlock);
-    });
+  // Set campaign name if provided
+  if (campaign) {
+    selectedCampaign = campaign
+    campaignNameElement.textContent = `Campaign: ${campaign}`
+  } else {
+    selectedCampaign = ""
+    campaignNameElement.textContent = "Your generosity can change lives"
+  }
 
-    // Re-attach event listeners to dynamically created buttons (important!)
-    const dynamicDonateButtons = campaignSlider.querySelectorAll('.donate-button');
-    dynamicDonateButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            donatePopup.style.display = "block";
-            // Logic to pre-fill campaign info in popup if needed, using button.dataset.campaign
-        });
-    });
+  // Reset form
+  document.getElementById("donation-form").reset()
+  document.getElementById("amount-value").textContent = "0"
+  selectedAmount = 0
 
-});
+  // Reset active amount buttons
+  const amountButtons = document.querySelectorAll(".amount-btn")
+  amountButtons.forEach((btn) => btn.classList.remove("active"))
+
+  // Show modal
+  modal.style.display = "block"
+
+  // Prevent body scrolling
+  document.body.style.overflow = "hidden"
+}
+
+function closeDonateForm() {
+  const modal = document.getElementById("donate-modal")
+  modal.style.display = "none"
+
+  // Re-enable body scrolling
+  document.body.style.overflow = "auto"
+}
+
+// Amount selection
+function selectAmount(amount) {
+  selectedAmount = amount
+  document.getElementById("amount-value").textContent = amount
+  document.getElementById("custom-amount").value = ""
+
+  // Update active button
+  const amountButtons = document.querySelectorAll(".amount-btn")
+  amountButtons.forEach((btn) => {
+    if (btn.textContent === `₹${amount}`) {
+      btn.classList.add("active")
+    } else {
+      btn.classList.remove("active")
+    }
+  })
+}
+
+function updateAmount(value) {
+  if (value && !isNaN(value)) {
+    selectedAmount = Number.parseInt(value)
+    document.getElementById("amount-value").textContent = selectedAmount
+
+    // Remove active class from preset buttons
+    const amountButtons = document.querySelectorAll(".amount-btn")
+    amountButtons.forEach((btn) => btn.classList.remove("active"))
+  }
+}
+
+// Add email validation function after the updateAmount function
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return emailRegex.test(email)
+}
+
+// Update the processPayment function to include email validation
+function processPayment() {
+  // Validate form
+  const name = document.getElementById("name").value
+  const email = document.getElementById("email").value
+  const phone = document.getElementById("phone").value
+
+  if (!name || !email || !phone || selectedAmount <= 0) {
+    alert("Please fill all fields and select a donation amount.")
+    return
+  }
+
+  // Validate email format
+  if (!validateEmail(email)) {
+    alert("Please enter a valid email address.")
+    return
+  }
+
+  // Close donation form
+  closeDonateForm()
+
+  // Show payment processing modal
+  const paymentModal = document.getElementById("payment-modal")
+  paymentModal.style.display = "block"
+
+  // Update success amount
+  document.getElementById("success-amount").textContent = selectedAmount
+
+  // Simulate payment processing (15 seconds)
+  setTimeout(() => {
+    // Hide payment modal
+    paymentModal.style.display = "none"
+
+    // Show success modal
+    const successModal = document.getElementById("success-modal")
+    successModal.style.display = "block"
+  }, 3000)
+}
+
+function closeSuccessModal() {
+  const successModal = document.getElementById("success-modal")
+  successModal.style.display = "none"
+
+  // Re-enable body scrolling
+  document.body.style.overflow = "auto"
+}
+
+// Close modals when clicking outside
+window.onclick = (event) => {
+  const donateModal = document.getElementById("donate-modal")
+  const successModal = document.getElementById("success-modal")
+
+  if (event.target === donateModal) {
+    closeDonateForm()
+  }
+
+  if (event.target === successModal) {
+    closeSuccessModal()
+  }
+}
+
+// Add quotes rotation functionality at the end of the file
+// Array of inspirational quotes
+const quotes = [
+  '"The best way to find yourself is to lose yourself in the service of others." — Mahatma Gandhi',
+  '"We make a living by what we get, but we make a life by what we give." — Winston Churchill',
+  '"No one has ever become poor by giving." — Anne Frank',
+  '"Giving is not just about making a donation. It\'s about making a difference." — Kathy Calvin',
+  '"The meaning of life is to find your gift. The purpose of life is to give it away." — Pablo Picasso',
+]
+
+let currentQuoteIndex = 0
+
+// Function to rotate quotes
+function rotateQuotes() {
+  const quoteElement = document.getElementById("hero-quote")
+
+  // Fade out
+  quoteElement.style.opacity = 0
+
+  setTimeout(() => {
+    // Update quote
+    currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length
+    quoteElement.textContent = quotes[currentQuoteIndex]
+
+    // Fade in
+    quoteElement.style.opacity = 1
+  }, 1000)
+}
+
+// Initialize quote rotation when DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  // Set initial position of slider
+  updateSliderPosition()
+
+  // Initialize quotes
+  const quoteElement = document.getElementById("hero-quote")
+  quoteElement.textContent = quotes[0]
+
+  // Start quote rotation
+  setInterval(rotateQuotes, 5000) // Change quote every 5 seconds
+})
+
