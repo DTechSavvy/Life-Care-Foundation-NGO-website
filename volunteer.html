@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NGO Volunteering</title>
-    <link rel="stylesheet" href="/volunteer.css">
     <link rel="stylesheet" href="volunteer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -14,14 +13,26 @@
             <h1>Life Care</h1>
         </div>
         <div class="nav-links">
-            <a href="/index.html">Home</a>
+            <a href="#home">Home</a>
             <a href="#events">Events</a>
-            <a href="/aboutus.html">About</a>
+            <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <main>
+        <!-- Hero Section with Image Background -->
+        <section id="home" class="hero">
+            <div class="image-background">
+                <div class="overlay"></div>
+            </div>
+            <div class="hero-content">
+                <h1>Make a Difference Today</h1>
+                <p>Join our community of volunteers and help create positive change in the world.</p>
+                <a href="#events" class="cta-button">Get Started</a>
+            </div>
+        </section>
+
         <section id="events" class="events-section">
             <h1 class="section-title">UPCOMING EVENTS</h1>
             <div class="events-grid">
@@ -218,16 +229,16 @@
                     <div class="contact-form-container">
                         <form class="contact-form">
                             <div class="form-group">
-                                <input type="text" placeholder="Your Name" required>
+                                <input type="text" name="name" placeholder="Your Name" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" placeholder="Your Email" required>
+                                <input type="email" name="email" placeholder="Your Email" required>
                             </div>
                             <div class="form-group">
-                                <input type="text" placeholder="Subject" required>
+                                <input type="text" name="subject" placeholder="Subject" required>
                             </div>
                             <div class="form-group">
-                                <textarea placeholder="Your Message" rows="5" required></textarea>
+                                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
                             </div>
                             <button type="submit" class="submit-btn">
                                 <span>Send Message</span>
@@ -244,6 +255,64 @@
         <p>&copy; 2024 Life Care. All rights reserved.</p>
     </footer>
 
-    <script src="/javascripts/scriptvolunteering.js"></script>
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Event Registration</h2>
+            <div id="eventDetails" class="event-details">
+                <h3 id="modalEventTitle"></h3>
+                <p id="modalEventDate"></p>
+            </div>
+            <form id="registrationForm" class="registration-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" min="18" required>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Previous Volunteer Experience</label>
+                    <textarea id="experience" name="experience" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="availability">Availability (Hours per week)</label>
+                    <input type="number" id="availability" name="availability" min="1" max="40" required>
+                </div>
+                <div class="form-group">
+                    <label for="interests">Areas of Interest</label>
+                    <select id="interests" name="interests" multiple required>
+                        <option value="education">Education</option>
+                        <option value="environment">Environment</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="community">Community Development</option>
+                        <option value="social">Social Services</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="terms" required>
+                        I agree to the terms and conditions
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span>Submit Registration</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scriptvolunteering.js"></script>
 </body>
 </html> 
