@@ -1,5 +1,50 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Form Validation Functions
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function validatePhone(phone) {
+        const phoneRegex = /^\+?[\d\s-]{10,}$/;
+        return phoneRegex.test(phone);
+    }
+
+    function validateAge(age) {
+        return !isNaN(age) && age >= 18 && age <= 100;
+    }
+
+    function validateAvailability(hours) {
+        return !isNaN(hours) && hours >= 1 && hours <= 40;
+    }
+
+    function showError(input, message) {
+        const formGroup = input.closest('.form-group');
+        const existingError = formGroup.querySelector('.error-message');
+        
+        if (!existingError) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.style.color = '#ff3b30';
+            errorDiv.style.fontSize = '0.8rem';
+            errorDiv.style.marginTop = '5px';
+            errorDiv.textContent = message;
+            formGroup.appendChild(errorDiv);
+        }
+        
+        input.style.borderColor = '#ff3b30';
+    }
+
+    function clearError(input) {
+        const formGroup = input.closest('.form-group');
+        const errorDiv = formGroup.querySelector('.error-message');
+        if (errorDiv) {
+            errorDiv.remove();
+        }
+        input.style.borderColor = '';
+    }
+
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -96,13 +141,173 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Contact Form Submission
+    // Real-time validation for registration form
+    const registrationForm = document.getElementById('registrationForm');
+    if (registrationForm) {
+        const registrationInputs = registrationForm.querySelectorAll('input, textarea, select');
+        
+        registrationInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                clearError(this);
+            });
+        });
+
+        registrationForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            let isValid = true;
+            
+            // Clear all previous errors
+            registrationInputs.forEach(input => clearError(input));
+            
+            // Get form data
+            const formData = new FormData(registrationForm);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Validate full name
+            if (!data.fullName || data.fullName.trim().length < 2) {
+                showError(registrationForm.fullName, 'Please enter a valid full name (minimum 2 characters)');
+                isValid = false;
+            }
+            
+            // Validate email
+            if (!validateEmail(data.email)) {
+                showError(registrationForm.email, 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate phone
+            if (!validatePhone(data.phone)) {
+                showError(registrationForm.phone, 'Please enter a valid phone number (minimum 10 digits)');
+                isValid = false;
+            }
+            
+            // Validate age
+            if (!validateAge(data.age)) {
+                showError(registrationForm.age, 'Age must be between 18 and 100');
+                isValid = false;
+            }
+            
+            // Validate availability
+            if (!validateAvailability(data.availability)) {
+                showError(registrationForm.availability, 'Hours must be between 1 and 40');
+                isValid = false;
+            }
+            
+            // Validate interests
+            const interests = Array.from(registrationForm.interests.selectedOptions).map(option => option.value);
+            if (interests.length === 0) {
+                showError(registrationForm.interests, 'Please select at least one area of interest');
+                isValid = false;
+            }
+            
+            // Validate terms
+            if (!data.terms) {
+                showError(registrationForm.terms, 'You must agree to the terms and conditions');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                return;
+            }
+            
+            // Add event details to the data
+            data.eventTitle = modalEventTitle.textContent;
+            data.eventDate = modalEventDate.textContent.replace('Date: ', '');
+            
+            try {
+                const response = await fetch('process_registration.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('Thank you for registering! We will contact you soon.');
+                    modal.style.display = 'none';
+                    registrationForm.reset();
+                } else {
+                    throw new Error(result.error || 'Registration failed');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        });
+    }
+
+    // Real-time validation for contact form
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        const contactInputs = contactForm.querySelectorAll('input, textarea');
+        
+        contactInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                clearError(this);
+            });
+        });
+
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            contactForm.reset();
+            let isValid = true;
+            
+            // Clear all previous errors
+            contactInputs.forEach(input => clearError(input));
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Validate name
+            if (!data.name || data.name.trim().length < 2) {
+                showError(contactForm.name, 'Please enter a valid name (minimum 2 characters)');
+                isValid = false;
+            }
+            
+            // Validate email
+            if (!validateEmail(data.email)) {
+                showError(contactForm.email, 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate subject
+            if (!data.subject || data.subject.trim().length < 3) {
+                showError(contactForm.subject, 'Please enter a valid subject (minimum 3 characters)');
+                isValid = false;
+            }
+            
+            // Validate message
+            if (!data.message || data.message.trim().length < 10) {
+                showError(contactForm.message, 'Please enter a message (minimum 10 characters)');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                return;
+            }
+            
+            try {
+                const response = await fetch('process_contact.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('Thank you for your message! We will get back to you soon.');
+                    contactForm.reset();
+                } else {
+                    throw new Error(result.error || 'Message sending failed');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
         });
     }
 
@@ -129,7 +334,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Registration Modal Functionality
     const modal = document.getElementById('registrationModal');
     const closeModal = document.querySelector('.close-modal');
-    const registrationForm = document.getElementById('registrationForm');
     const modalEventTitle = document.getElementById('modalEventTitle');
     const modalEventDate = document.getElementById('modalEventDate');
 
@@ -151,27 +355,4 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.style.display = 'none';
         }
     }
-
-    // Handle registration form submission
-    registrationForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(registrationForm);
-        const data = Object.fromEntries(formData.entries());
-        
-        // Add event details to the data
-        data.eventTitle = modalEventTitle.textContent;
-        data.eventDate = modalEventDate.textContent;
-        
-        // Here you would typically send the data to a server
-        console.log('Registration Data:', data);
-        
-        // Show success message
-        alert('Thank you for registering! We will contact you soon.');
-        
-        // Close modal and reset form
-        modal.style.display = 'none';
-        registrationForm.reset();
-    });
 }); 
