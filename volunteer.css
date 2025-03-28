@@ -70,25 +70,122 @@ body {
 
 /* Hero Section */
 .hero {
+    position: relative;
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('https://source.unsplash.com/random/1920x1080/?volunteer') center/cover;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--white);
     padding: 0 1rem;
+    overflow: hidden;
+}
+
+.image-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('https://images.unsplash.com/photo-1593113630400-ea4288922497?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.1);
+    animation: zoomEffect 20s infinite alternate;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.7)
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 2rem;
 }
 
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 1s ease-out;
 }
 
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-content .cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: fadeInUp 1s ease-out 0.5s backwards;
+    text-decoration: none;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomEffect {
+    from {
+        transform: scale(1.1);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}
+
+/* Responsive Design for Hero Section */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-content .cta-button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
 }
 
 /* Buttons */
