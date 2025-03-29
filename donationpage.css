@@ -225,7 +225,7 @@
   
   /* Campaign Card */
   .campaign-card {
-    flex: 0 0 300px;
+    flex: 0 0 350px;
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
