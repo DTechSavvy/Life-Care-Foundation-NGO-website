@@ -1,189 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-<header>
-    <div class="container">
-        <h1>news feed </h1>
-    </div>
-</header>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="news.css">
-    <title>NGO News Feed</title>
+    <title>NGO News & Stories</title>
+    <link rel="stylesheet" href="/news.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-<article class="news-item">
-    <h2>Community Clean-Up Drive A Huge Success</h2>
-    <p>This past weekend, volunteers from our NGO participated in a community clean-up drive, collecting over 500 pounds of trash. Thank you to all who joined us!</p>
-    <button class="read-more">Read More</button>
-</article>
-
-<article class="news-item">
-    <h2>Fundraising Gala Raises $10,000 for Local Families</h2>
-    <p>Our annual fundraising gala was a resounding success, allowing us to support local families in need. We appreciate everyone's generous contributions!</p>
-    <button class="read-more">Read More</button>
-</article>
-
-<article class="news-item">
-    <h2>Health Awareness Campaign Reaches Thousands</h2>
-    <p>Our health awareness campaign has successfully reached thousands of individuals, spreading knowledge about vital health issues and preventive measures.</p>
-    <button class="read-more">Read More</button>
-</article>
-
-
-
-
-
-
+    <!-- Header Section -->
     <header>
-        <div class="container">
-            <h1>Inspiring Stories of Change Through Our NGO</h1>
-        </div>
+        <nav>
+            <div class="logo">
+                <img src="#" alt="Logo">
+                <h1>Life Care Foundation</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#news">News</a></li>
+                <li><a href="#stories">Inspiring Stories</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#quotes">Quotes</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <div class="story-container">
-            <div class="story">
-                <div class="story-image">
-                    <img src="html/images/STORIES1.jpg" alt="Education Program">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Making a Difference Together</h1>
+            <p>Stay updated with the latest news, stories, and events from our NGO community</p>
+            
+        </div>
+    </section>
+
+    <!-- News Feed Section -->
+    <section id="news" class="news-section">
+        <h2>Latest NGO News</h2>
+        <div class="news-grid">
+            <article class="news-card">
+                <img src="/images/News/news2.jpg" alt="NGO News">
+                <div class="news-content">
+                    <h3>Global Initiative Launches New Education Program</h3>
+                    <p class="date">March 15, 2024</p>
+                    <p>Our organization has launched a new education initiative aimed at providing quality education to underprivileged children...</p>
+                    <a href="#" class="read-more">Read More</a>
                 </div>
-                <div class="story-text">
-                    <h2>Empowering Rural Communities Through Education</h2>
-                    <p>Our NGO has made a significant impact in rural areas by setting up schools and providing education to children who otherwise wouldn’t have access. In one such community in <strong>Khunti Village</strong>, a young girl named <strong>Anjali</strong> was able to pursue her dreams of becoming a teacher thanks to the free education programs we implemented.</p>
-                    <p>Anjali's story is just one of many where children, especially girls, have gained access to quality education, enabling them to pursue careers and break the cycle of poverty.</p>
+            </article>
+            <article class="news-card">
+                <img src="/images/News/news1.jpg" alt="NGO News">
+                <div class="news-content">
+                    <h3>Volunteer Program Reaches New Milestone</h3>
+                    <p class="date">March 14, 2024</p>
+                    <p>Our volunteer program has successfully reached 10,000 active volunteers worldwide...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+            <article class="news-card">
+                <img src="/images/News/news3.jpg" alt="NGO News">
+                <div class="news-content">
+                    <h3>Community Development Project Success</h3>
+                    <p class="date">March 13, 2024</p>
+                    <p>Recent community development projects have shown remarkable progress in rural areas...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Inspiring Stories Section -->
+    <section id="stories" class="stories-section">
+        <h2>Inspiring Stories</h2>
+        <div class="stories-container">
+            <article class="story-card">
+                <img src="/images/News/inspiring1.jpg" alt="Success Story">
+                <div class="story-content">
+                    <h3>From Struggle to Success</h3>
+                    <p>Meet Sarah, who overcame poverty through our education program and now runs her own business...</p>
+                    <a href="#" class="read-more">Read Full Story</a>
+                </div>
+            </article>
+            <article class="story-card">
+                <img src="/images/News/inspiring2.jpg" alt="Success Story">
+                <div class="story-content">
+                    <h3>Community Impact</h3>
+                    <p>How a small village transformed through our sustainable development initiatives...</p>
+                    <a href="#" class="read-more">Read Full Story</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events-section">
+        <h2>Upcoming Events</h2>
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="event-date">
+                    <span class="day">25</span>
+                    <span class="month">Mar</span>
+                </div>
+                <div class="event-details">
+                    <h3>Annual Fundraising Gala</h3>
+                    <p>Join us for our biggest fundraising event of the year...</p>
+                    <button class="signup-btn">Sign Up</button>
                 </div>
             </div>
-
-            <div class="story">
-                <div class="story-image">
-                    <img src="html/images/STORIES2.webp" alt="Healthcare Program">
+            <div class="event-card">
+                <div class="event-date">
+                    <span class="day">30</span>
+                    <span class="month">Mar</span>
                 </div>
-                <div class="story-text">
-                    <h2>Healthcare Initiatives in Underserved Areas</h2>
-                    <p>Our health initiatives have transformed the lives of thousands. In remote villages like <strong>Patna District</strong>, where access to healthcare was minimal, we set up mobile medical camps providing essential treatments to villagers who had never seen a doctor before.</p>
-                    <p>These health camps have prevented countless diseases, and many lives have been saved through basic medical care and education about hygiene and prevention.</p>
-                </div>
-            </div>
-
-            <div class="story">
-                <div class="story-image">
-                    <img src="/blog1.jpg" alt="Water Initiative">
-                </div>
-                <div class="story-text">
-                    <h2>Providing Clean Water to Communities in Need</h2>
-                    <p>Access to clean water is a basic necessity that many take for granted. However, in places like <strong>Shivpur</strong>, families would walk miles each day to fetch water from contaminated sources. With the help of donations and partnerships, we’ve installed new wells and water filtration systems that have improved the lives of over 10,000 people.</p>
-                    <p>These efforts have significantly reduced waterborne diseases and improved the overall quality of life for the community.</p>
+                <div class="event-details">
+                    <h3>Volunteer Training Workshop</h3>
+                    <p>Learn how to make a difference in your community...</p>
+                    <button class="signup-btn">Sign Up</button>
                 </div>
             </div>
         </div>
+    </section>
 
-
-
-
-
-
-        <header>
-            <div class="container">
-                <h1>Upcoming Events</h1>
+    <!-- Quotes Section -->
+    <section id="quotes" class="quotes-section">
+        <h2>Inspirational Quotes</h2>
+        <div class="quotes-container">
+            <div class="quote-card">
+                <img src="/images/News/quotes1.jpg" alt="Quote Author">
+                <blockquote>
+                    "The best way to find yourself is to lose yourself in the service of others."
+                </blockquote>
+                <cite>- Mahatma Gandhi</cite>
             </div>
-            <!-- Global "Sign Up Now" Button to Redirect to the Sign-up Page -->
-            <button onclick="window.location.href='signup.html'">Sign up now</button>
-        </header>
-        <!-- Event Box 1 -->
-        <div class="event-box">
-            <h2>INITIAL VOLUNTEER BRIEFING</h2>
-            <p>Join us for an introductory session to help volunteers get started on their journey of making a difference.</p>
-            <p><strong>Eligibility:</strong> Open to everyone</p>
-            <p><strong>Orientation Date:</strong> 14th April 2025 | 8 AM IST</p>
-            <p><strong>Event Timeline:</strong> 23rd March 2025 to 14th April 2025</p>
-            <p>Volunteer today and help us contribute to a greener planet.</p>
-            <!-- Event-specific "Sign Up Now" Button -->
-            <button onclick="window.location.href='signup.html'">Sign up now</button>
-        </div>
-
-        <!-- Event Box 2 -->
-        <div class="event-box">
-            <h2>AWARENESS CAMPAIGN</h2>
-            <p>Raising awareness on crucial social issues and promoting meaningful action.</p>
-            <p><strong>Eligibility:</strong> Open to everyone</p>
-            <p><strong>Orientation Date:</strong> 22nd February 2025 | 7 PM IST</p>
-            <p><strong>Event Timeline:</strong> 23rd February 2025 to 10th March 2025</p>
-            <p>Volunteer today and help us contribute to a greener planet.</p>
-            <!-- Event-specific "Sign Up Now" Button -->
-            <button onclick="window.location.href='signup.html'">Sign up now</button>
-        </div>
-
-
-
-
-    <header>
-        <div class="container">
-            <h1>Our NGO Blog</h1>
-            <p>Stories and Updates on Social and Economic Issues</p>
-        </div>
-    </header>
-        <main>
-        <div class="blog-container">
-            <div class="blog-post">
-                <img src="/blog1.jpg" alt="Blog Post 1">
-                <div class="blog-content">
-                    <h2><a href="#">Empowering Communities Through Education</a></h2>
-                    <p class="meta">Posted on March 23, 2025 by Admin</p>
-                    <p>Education is a powerful tool for change. Our recent initiatives in rural areas have transformed lives...</p>
-                    <a href="#">Read more</a>
-                </div>
+            <div class="quote-card">
+                <img src="/images/News/quotes2.jpg" alt="Quote Author">
+                <blockquote>
+                    "We make a living by what we get, but we make a life by what we give."
+                </blockquote>
+                <cite>- Winston Churchill</cite>
             </div>
-
-            <div class="blog-post">
-                <img src="/blog3.jpg" alt="Blog Post 2">
-                <div class="blog-content">
-                    <h2><a href="#">Healthcare Initiatives in Remote Regions</a></h2>
-                    <p class="meta">Posted on March 15, 2025 by Admin</p>
-                    <p>Access to healthcare is a fundamental right. Discover how our mobile clinics are making a difference...</p>
-                    <a href="#">Read more</a>
-                </div>
-            </div>
-
-            <div class="blog-post">
-                <img src="/blog2.jpg" alt="Blog Post 3">
-                <div class="blog-content">
-                    <h2><a href="#">Providing Clean Water to Underserved Communities</a></h2>
-                    <p class="meta">Posted on March 10, 2025 by Admin</p>
-                    <p>Clean water is essential for life. Learn about our efforts to bring safe drinking water to remote villages...</p>
-                    <a href="#">Read more</a>
-                </div>
+            <div class="quote-card">
+                <img src="/images/News/quotes3.jpg" alt="Quote Author">
+                <blockquote>
+                    "The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate."
+                </blockquote>
+                <cite>- Ralph Waldo Emerson</cite>
             </div>
         </div>
+    </section>
 
-
-
-
-
-    <header>
-        <div class="container">
-            <h1> Quotes </h1>
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for the latest news and updates</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
         </div>
-    </header>
+    </section>
 
-    <p><strong>1. DONATE TO SUPPORT THE CAUSE</strong></p>
-    <p>Giving to charity makes you feel good; donating to charity is a major mood-booster. The knowledge that you're helping others is hugely empowering and, in turn, can make you feel happier and more fulfilled.</p>
-
-    <p><strong>2. MAKE CHANGE HAPPEN, VOLUNTEER</strong></p>
-    <img src="html/images/laundry facility.jpg" alt="Volunteer Image">
-    <p>Volunteering increases your social and relationship skills. While some people are naturally outgoing, others are shy and have a hard time meeting new people. Volunteering gives you the opportunity to practice and develop your social skills, since you are meeting regularly with a group of people with common interests.</p>
-
-    <p><strong>3. "It's not how much we give but how much love we put into giving"</strong></p>
-    <img src="images.jpg" alt="Charity Quote Image">
-    <p>If you haven't got any charity in your heart, you have the worst kind of heart trouble. Every good act is charity. A man's true wealth hereafter is the good that he does in this world to his fellows.</p>
-
-
-
-
-
-    </main>
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 NGO Name. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>We are dedicated to making a positive impact in communities worldwide through sustainable development and humanitarian aid.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#stories">Stories</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#quotes">Quotes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@ngonews.org</p>
+                <p>Phone: +1 234 567 890</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 NGO News. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script src="/javascripts/news.js"></script>
 </body>
-</html>
+</html> 
