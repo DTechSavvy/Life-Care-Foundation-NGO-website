@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Life Care</title>
+    <link rel="stylesheet" href="volunteer.css">
+    <style>
+        .admin-dashboard {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .admin-header h1 {
+            color: #ff3b30;
+            margin: 0;
+        }
+
+        .logout-btn {
+            padding: 0.5rem 1rem;
+            background: #ff3b30;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #ff9500;
+        }
+
+        .registrations-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .registrations-table th,
+        .registrations-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .registrations-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .registrations-table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        .error-message {
+            color: #ff3b30;
+            text-align: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #fff5f5;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-dashboard">
+        <div class="admin-header">
+            <h1>Admin Dashboard</h1>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+        <div id="error-message" class="error-message"></div>
+        <div id="loading" class="loading">Loading registrations...</div>
+        <div id="no-data" class="no-data" style="display: none;">No registrations found.</div>
+
+        <table class="registrations-table" style="display: none;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Event</th>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Age</th>
+                    <th>Experience</th>
+                    <th>Availability</th>
+                    <th>Interests</th>
+                    <th>Registration Date</th>
+                </tr>
+            </thead>
+            <tbody id="registrations-body">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        function checkAuth() {
+            const token = localStorage.getItem('adminToken');
+            if (!token) {
+                window.location.href = 'admin_login.html';
+                return;
+            }
+            return token;
+        }
+
+        // Fetch registrations
+        async function fetchRegistrations() {
+            const token = checkAuth();
+            if (!token) return;
+
+            try {
+                const response = await fetch('get_registrations.php', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch registrations');
+                }
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayRegistrations(data.registrations);
+                } else {
+                    throw new Error(data.error || 'Failed to fetch registrations');
+                }
+            } catch (error) {
+                showError(error.message);
+            }
+        }
+
+        // Display registrations in table
+        function displayRegistrations(registrations) {
+            const table = document.querySelector('.registrations-table');
+            const tbody = document.getElementById('registrations-body');
+            const loading = document.getElementById('loading');
+            const noData = document.getElementById('no-data');
+
+            if (registrations.length === 0) {
+                loading.style.display = 'none';
+                noData.style.display = 'block';
+                return;
+            }
+
+            tbody.innerHTML = '';
+            registrations.forEach(reg => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${reg.id}</td>
+                    <td>${reg.event_title}</td>
+                    <td>${reg.event_date}</td>
+                    <td>${reg.full_name}</td>
+                    <td>${reg.email}</td>
+                    <td>${reg.phone}</td>
+                    <td>${reg.age}</td>
+                    <td>${reg.previous_experience || 'None'}</td>
+                    <td>${reg.availability} hours</td>
+                    <td>${reg.areas_of_interest}</td>
+                    <td>${new Date(reg.registration_date).toLocaleString()}</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            loading.style.display = 'none';
+            noData.style.display = 'none';
+            table.style.display = 'table';
+        }
+
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('adminToken');
+            window.location.href = 'admin_login.html';
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
+            fetchRegistrations();
+        });
+    </script>
+</body>
+</html> 
