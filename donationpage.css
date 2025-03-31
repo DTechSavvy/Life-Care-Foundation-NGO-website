@@ -1,754 +1,757 @@
 /* Reset and Base Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  body {
-    background-color: #f9f9f9;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  /* Header Styles */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  
-  .logo h1 {
-    color: #d32f2f;
-    font-size: 24px;
-    font-weight: 700;
-  }
-  
-  nav ul {
-    display: flex;
-    list-style: none;
-  }
-  
-  nav ul li {
-    margin-left: 30px;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  nav ul li a:hover,
-  nav ul li a.active {
-    color: #d32f2f;
-  }
-  
-  /* Hero Section */
-  .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/placeholder.svg?height=600&width=1200");
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 100px 5%;
-    text-align: center;
-    position: relative;
-  }
-  
-  .hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .hero h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    font-weight: 700;
-  }
-  
-  .hero p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    line-height: 1.8;
-  }
-  
-  .hero blockquote {
-    font-style: italic;
-    font-size: 20px;
-    margin: 30px 0;
-    padding: 10px 20px;
-    border-left: 4px solid #ff5252;
-  }
-  
-  /* Add transition for quotes */
-  #hero-quote {
-    transition: opacity 1s ease;
-    min-height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Donate Button */
-  .donate-btn {
-    background-color: #d32f2f;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header Styles */
+/* Header Styling */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Logo Styling */
+.logo img {
+  height: 60px;
+  display: block;
+}
+
+/* Navigation Styling */
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin-left: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #d43c18;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/placeholder.svg?height=600&width=1200");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 100px 5%;
+  text-align: center;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+.hero blockquote {
+  font-style: italic;
+  font-size: 20px;
+  margin: 30px 0;
+  padding: 10px 20px;
+  border-left: 4px solid #ff5252;
+}
+
+/* Add transition for quotes */
+#hero-quote {
+  transition: opacity 1s ease;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Donate Button */
+.donate-btn {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+}
+
+.donate-btn:hover {
+  background-color: #b71c1c;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+}
+
+/* Pulse Animation */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
     box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
   }
-  
-  .donate-btn:hover {
-    background-color: #b71c1c;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);
   }
-  
-  /* Pulse Animation */
-  .pulse {
-    animation: pulse 2s infinite;
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
   }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-      box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
-    }
-    50% {
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);
-    }
-    100% {
-      transform: scale(1);
-      box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
-    }
+}
+
+/* Text Animation */
+.animate-text {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards 0.3s;
+}
+
+.animate-text-delay {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards 0.6s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Text Animation */
-  .animate-text {
+}
+
+/* Campaigns Section */
+.campaigns {
+  padding: 80px 5%;
+  text-align: center;
+  position: relative;
+}
+
+.campaigns h2 {
+  font-size: 36px;
+  color: #d32f2f;
+  margin-bottom: 10px;
+}
+
+.campaigns > p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* Slider Controls */
+.slider-controls {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  padding: 0 20px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.slider-controls button {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #d32f2f;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  pointer-events: auto;
+}
+
+.slider-controls button:hover {
+  background-color: #d32f2f;
+  color: white;
+}
+
+/* Campaign Slider */
+.campaign-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 0;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  gap: 30px;
+}
+
+.campaign-slider::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Campaign Card */
+.campaign-card {
+  flex: 0 0 350px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campaign-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.campaign-img {
+  position: relative;
+}
+
+.campaign-img img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: #e0e0e0;
+  margin-top: -4px;
+  position: relative;
+  z-index: 1;
+}
+
+.progress {
+  height: 100%;
+  background-color: #d32f2f;
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 15px;
+  font-size: 14px;
+  color: #666;
+}
+
+.campaign-content {
+  padding: 20px;
+  text-align: left;
+}
+
+.campaign-content h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #d32f2f;
+}
+
+.campaign-content p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  height: 60px;
+  overflow: hidden;
+}
+
+.campaign-content .donate-btn {
+  width: 100%;
+  padding: 10px;
+}
+
+/* Impact Section */
+.impact {
+  background-color: #f5f5f5;
+  padding: 80px 5%;
+  text-align: center;
+}
+
+.impact h2 {
+  font-size: 36px;
+  color: #d32f2f;
+  margin-bottom: 40px;
+}
+
+.impact-stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.stat {
+  flex: 1;
+  min-width: 200px;
+  background-color: white;
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.stat:hover {
+  transform: translateY(-5px);
+}
+
+.stat .count {
+  font-size: 36px;
+  font-weight: 700;
+  color: #d32f2f;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.stat p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 60px 5% 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-about,
+.footer-links,
+.footer-contact {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-about h3,
+.footer-links h3,
+.footer-contact h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #ff5252;
+}
+
+.footer-about p {
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 20px;
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ff5252;
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+  color: #ff5252;
+}
+
+.footer-contact p {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.footer-contact p i {
+  margin-right: 10px;
+  color: #ff5252;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  overflow: auto;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s forwards 0.3s;
   }
-  
-  .animate-text-delay {
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background-color: white;
+  margin: 50px auto;
+  padding: 25px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: slideIn 0.4s;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s forwards 0.6s;
   }
-  
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  /* Campaigns Section */
-  .campaigns {
-    padding: 80px 5%;
-    text-align: center;
-    position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #d32f2f;
+}
+
+.modal-content h2 {
+  color: #d32f2f;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#campaign-name {
+  text-align: center;
+  margin-bottom: 30px;
+  font-style: italic;
+  color: #666;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #d32f2f;
+  outline: none;
+}
+
+.amount-options {
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.amount-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.amount-btn {
+  padding: 8px;
+  font-size: 15px;
+}
+
+.amount-btn {
+  flex: 1;
+  min-width: 80px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.amount-btn:hover,
+.amount-btn.active {
+  background-color: #d32f2f;
+  color: white;
+  border-color: #d32f2f;
+}
+
+#custom-amount {
+  flex: 2;
+}
+
+.selected-amount {
+  font-weight: 600;
+  color: #d32f2f;
+  text-align: right;
+  margin-top: 10px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group input {
+  width: auto;
+  margin-right: 10px;
+}
+
+.checkbox-group label {
+  margin-bottom: 0;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #b71c1c;
+}
+
+/* Payment Processing Modal */
+.payment-processing {
+  text-align: center;
+  padding: 40px;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #d32f2f;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .campaigns h2 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success Modal */
+.success-message {
+  text-align: center;
+  padding: 40px;
+}
+
+.success-icon {
+  font-size: 80px;
+  color: #4caf50;
+  margin-bottom: 20px;
+  animation: scaleIn 0.5s;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.success-message h2 {
+  color: #4caf50;
+}
+
+.donation-details {
+  margin: 20px 0;
+  font-weight: 600;
+}
+
+.ok-btn {
+  padding: 12px 40px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ok-btn:hover {
+  background-color: #388e3c;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  nav ul {
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav ul li {
+    margin: 5px 10px;
+  }
+
+  .hero h1 {
     font-size: 36px;
-    color: #d32f2f;
-    margin-bottom: 10px;
   }
-  
-  .campaigns > p {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 40px;
+
+  .hero p {
+    font-size: 16px;
   }
-  
-  /* Slider Controls */
-  .slider-controls {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    left: 0;
-    padding: 0 20px;
-    z-index: 10;
-    pointer-events: none;
-  }
-  
-  .slider-controls button {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #d32f2f;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    pointer-events: auto;
-  }
-  
-  .slider-controls button:hover {
-    background-color: #d32f2f;
-    color: white;
-  }
-  
-  /* Campaign Slider */
+
   .campaign-slider {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 20px 0;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-    gap: 30px;
+    padding: 10px 0;
   }
-  
-  .campaign-slider::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-  }
-  
-  /* Campaign Card */
+
   .campaign-card {
-    flex: 0 0 350px;
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 0 0 280px;
   }
-  
-  .campaign-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+
+  .slider-controls {
+    top: auto;
+    bottom: 20px;
   }
-  
-  .campaign-img {
-    position: relative;
+
+  .slider-controls button {
+    width: 40px;
+    height: 40px;
   }
-  
-  .campaign-img img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .progress-bar {
-    height: 8px;
-    background-color: #e0e0e0;
-    margin-top: -4px;
-    position: relative;
-    z-index: 1;
-  }
-  
-  .progress {
-    height: 100%;
-    background-color: #d32f2f;
-  }
-  
-  .progress-text {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 15px;
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .campaign-content {
-    padding: 20px;
-    text-align: left;
-  }
-  
-  .campaign-content h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #d32f2f;
-  }
-  
-  .campaign-content p {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 20px;
-    height: 60px;
-    overflow: hidden;
-  }
-  
-  .campaign-content .donate-btn {
-    width: 100%;
-    padding: 10px;
-  }
-  
-  /* Impact Section */
-  .impact {
-    background-color: #f5f5f5;
-    padding: 80px 5%;
-    text-align: center;
-  }
-  
-  .impact h2 {
-    font-size: 36px;
-    color: #d32f2f;
-    margin-bottom: 40px;
-  }
-  
-  .impact-stats {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .stat {
-    flex: 1;
-    min-width: 200px;
-    background-color: white;
-    padding: 30px 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
-  }
-  
-  .stat:hover {
-    transform: translateY(-5px);
-  }
-  
-  .stat .count {
-    font-size: 36px;
-    font-weight: 700;
-    color: #d32f2f;
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .stat p {
-    font-size: 16px;
-    color: #666;
-  }
-  
-  /* Footer */
-  footer {
-    background-color: #333;
-    color: white;
-    padding: 60px 5% 20px;
-  }
-  
-  .footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 40px;
-    margin-bottom: 40px;
-  }
-  
-  .footer-about,
-  .footer-links,
-  .footer-contact {
-    flex: 1;
-    min-width: 250px;
-  }
-  
-  .footer-about h3,
-  .footer-links h3,
-  .footer-contact h3 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #ff5252;
-  }
-  
-  .footer-about p {
-    margin-bottom: 20px;
-    line-height: 1.8;
-  }
-  
-  .social-icons a {
-    color: white;
-    font-size: 20px;
-    margin-right: 15px;
-    transition: color 0.3s ease;
-  }
-  
-  .social-icons a:hover {
-    color: #ff5252;
-  }
-  
-  .footer-links ul {
-    list-style: none;
-  }
-  
-  .footer-links ul li {
-    margin-bottom: 10px;
-  }
-  
-  .footer-links ul li a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .footer-links ul li a:hover {
-    color: #ff5252;
-  }
-  
-  .footer-contact p {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .footer-contact p i {
-    margin-right: 10px;
-    color: #ff5252;
-  }
-  
-  .footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  /* Modal Styles */
-  .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    overflow: auto;
-    animation: fadeIn 0.3s;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
+
   .modal-content {
-    background-color: white;
-    margin: 50px auto;
-    padding: 25px;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-    position: relative;
-    animation: slideIn 0.4s;
-    max-height: 80vh;
-    overflow-y: auto;
+    padding: 20px;
+    margin: 30px auto;
+    max-height: 85vh;
   }
-  
-  @keyframes slideIn {
-    from {
-      transform: translateY(-50px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 60px 5%;
   }
-  
-  .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
+
+  .hero h1 {
     font-size: 28px;
-    font-weight: bold;
-    color: #aaa;
-    cursor: pointer;
-    transition: color 0.3s ease;
   }
-  
-  .close-btn:hover {
-    color: #d32f2f;
+
+  .campaigns h2,
+  .impact h2 {
+    font-size: 28px;
   }
-  
-  .modal-content h2 {
-    color: #d32f2f;
-    margin-bottom: 20px;
-    text-align: center;
+
+  .stat {
+    min-width: 100%;
   }
-  
-  #campaign-name {
-    text-align: center;
-    margin-bottom: 30px;
-    font-style: italic;
-    color: #666;
-  }
-  
-  /* Form Styles */
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #333;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-  }
-  
-  .form-group input:focus {
-    border-color: #d32f2f;
-    outline: none;
-  }
-  
+
   .amount-options {
-    gap: 8px;
-    margin-bottom: 10px;
+    flex-direction: column;
   }
-  
-  .amount-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
-  
+
   .amount-btn {
-    padding: 8px;
-    font-size: 15px;
-  }
-  
-  .amount-btn {
-    flex: 1;
-    min-width: 80px;
-    padding: 10px;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .amount-btn:hover,
-  .amount-btn.active {
-    background-color: #d32f2f;
-    color: white;
-    border-color: #d32f2f;
-  }
-  
-  #custom-amount {
-    flex: 2;
-  }
-  
-  .selected-amount {
-    font-weight: 600;
-    color: #d32f2f;
-    text-align: right;
-    margin-top: 10px;
-  }
-  
-  .checkbox-group {
-    display: flex;
-    align-items: center;
-  }
-  
-  .checkbox-group input {
-    width: auto;
-    margin-right: 10px;
-  }
-  
-  .checkbox-group label {
-    margin-bottom: 0;
-  }
-  
-  .submit-btn {
     width: 100%;
-    padding: 14px;
-    background-color: #d32f2f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
   }
-  
-  .submit-btn:hover {
-    background-color: #b71c1c;
-  }
-  
-  /* Payment Processing Modal */
-  .payment-processing {
-    text-align: center;
-    padding: 40px;
-  }
-  
-  .loader {
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #d32f2f;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
-    margin: 20px auto;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  /* Success Modal */
-  .success-message {
-    text-align: center;
-    padding: 40px;
-  }
-  
-  .success-icon {
-    font-size: 80px;
-    color: #4caf50;
-    margin-bottom: 20px;
-    animation: scaleIn 0.5s;
-  }
-  
-  @keyframes scaleIn {
-    from {
-      transform: scale(0);
-    }
-    to {
-      transform: scale(1);
-    }
-  }
-  
-  .success-message h2 {
-    color: #4caf50;
-  }
-  
-  .donation-details {
-    margin: 20px 0;
-    font-weight: 600;
-  }
-  
-  .ok-btn {
-    padding: 12px 40px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .ok-btn:hover {
-    background-color: #388e3c;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    header {
-      flex-direction: column;
-      padding: 15px;
-    }
-  
-    nav ul {
-      margin-top: 15px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-  
-    nav ul li {
-      margin: 5px 10px;
-    }
-  
-    .hero h1 {
-      font-size: 36px;
-    }
-  
-    .hero p {
-      font-size: 16px;
-    }
-  
-    .campaign-slider {
-      padding: 10px 0;
-    }
-  
-    .campaign-card {
-      flex: 0 0 280px;
-    }
-  
-    .slider-controls {
-      top: auto;
-      bottom: 20px;
-    }
-  
-    .slider-controls button {
-      width: 40px;
-      height: 40px;
-    }
-  
-    .modal-content {
-      padding: 20px;
-      margin: 30px auto;
-      max-height: 85vh;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .hero {
-      padding: 60px 5%;
-    }
-  
-    .hero h1 {
-      font-size: 28px;
-    }
-  
-    .campaigns h2,
-    .impact h2 {
-      font-size: 28px;
-    }
-  
-    .stat {
-      min-width: 100%;
-    }
-  
-    .amount-options {
-      flex-direction: column;
-    }
-  
-    .amount-btn {
-      width: 100%;
-    }
-  }
-  
-  
+}
+
