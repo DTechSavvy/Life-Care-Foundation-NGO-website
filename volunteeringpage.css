@@ -25,33 +25,71 @@ body {
 }
 
 /* Navbar Styles */
+/* Navbar Styling */
 .navbar {
-    position: fixed;
+    background: white; /* White navbar */
+    padding: 10px 0; /* Reduced height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Freezes navbar at the top */
+    width: 100%;
     top: 0;
     left: 0;
-    width: 100%;
-    background: var(--white);
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000; /* Ensures it stays above other elements */
+}
+
+/* Navbar Container */
+.navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+    width: 90%;
+    max-width: 1200px;
 }
 
-.logo h1 {
-    color: var(--primary-red);
+/* Logo Styling */
+.navbar .logo img {
+    height: 60px; /* Smaller logo */
+    transition: transform 0.3s ease-in-out;
 }
 
-.nav-links a {
-    color: var(--dark-gray);
+.navbar .logo img:hover {
+    transform: scale(1.05); /* Slight hover zoom effect */
+}
+
+/* Navigation Links */
+.navbar .nav-links a {
+    color: black; /* Black text by default */
     text-decoration: none;
-    margin-left: 2rem;
-    transition: color 0.3s ease;
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px 12px; /* Adds some padding for better clickability */
+    transition: color 0.3s ease; /* Smooth transition */
 }
 
-.nav-links a:hover {
-    color: var(--primary-red);
+/* Hover Effect: Only Text Turns Red */
+.navbar .nav-links a:hover {
+    color: #d43c18; /* Turns red on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar .nav-links {
+        margin-top: 10px;
+    }
+
+    .navbar .nav-links a {
+        display: block;
+        margin: 5px 0;
+    }
 }
 
 .hamburger {
@@ -524,11 +562,84 @@ body {
 
 /* Footer */
 footer {
-    background-color: var(--dark-gray);
-    color: var(--white);
+    background-color: #333;
+    color: white;
+    padding: 60px 5% 20px;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .footer-about,
+  .footer-links,
+  .footer-contact {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .footer-about h3,
+  .footer-links h3,
+  .footer-contact h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #ff5252;
+  }
+  
+  .footer-about p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+  
+  .social-icons a {
+    color: white;
+    font-size: 20px;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    color: #ff5252;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+  }
+  
+  .footer-links ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links ul li a:hover {
+    color: #ff5252;
+  }
+  
+  .footer-contact p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-contact p i {
+    margin-right: 10px;
+    color: #ff5252;
+  }
+  
+  .footer-bottom {
     text-align: center;
-    padding: 1rem;
-}
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
 
 /* Responsive Design */
 @media (max-width: 768px) {
