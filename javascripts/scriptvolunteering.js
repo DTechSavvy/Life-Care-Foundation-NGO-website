@@ -211,29 +211,57 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Add event details to the data
-            data.eventTitle = modalEventTitle.textContent;
-            data.eventDate = modalEventDate.textContent.replace('Date: ', '');
+            const eventTitle = modalEventTitle.textContent;
+            const eventDate = modalEventDate.textContent.replace('Date: ', '');
+            
+            // Format the data object
+            const formattedData = {
+                eventTitle: eventTitle,
+                eventDate: eventDate,
+                fullName: data.fullName.trim(),
+                email: data.email.trim(),
+                phone: data.phone.trim(),
+                age: parseInt(data.age),
+                experience: (data.experience || '').trim(),
+                availability: parseInt(data.availability),
+                interests: Array.from(registrationForm.interests.selectedOptions).map(option => option.value)
+            };
             
             try {
                 const response = await fetch('process_registration.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(formattedData)
                 });
 
-                const result = await response.json();
+                // Log the response for debugging
+                console.log('Response status:', response.status);
+                const responseText = await response.text();
+                console.log('Response text:', responseText);
+
+                // Try to parse the response as JSON
+                let result;
+                try {
+                    result = JSON.parse(responseText);
+                } catch (e) {
+                    console.error('Failed to parse JSON response:', e);
+                    throw new Error('Invalid server response');
+                }
                 
                 if (result.success) {
                     alert('Thank you for registering! We will contact you soon.');
                     modal.style.display = 'none';
+                    document.body.style.overflow = ''; // Restore scrolling
                     registrationForm.reset();
                 } else {
                     throw new Error(result.error || 'Registration failed');
                 }
             } catch (error) {
                 alert('Error: ' + error.message);
+                console.error('Registration error:', error);
             }
         });
     }
@@ -289,24 +317,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             try {
-                const response = await fetch('process_contact.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
+                // Store in localStorage
+                const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+                messages.push({
+                    ...data,
+                    timestamp: new Date().toISOString()
                 });
-
-                const result = await response.json();
+                localStorage.setItem('contactMessages', JSON.stringify(messages));
                 
-                if (result.success) {
-                    alert('Thank you for your message! We will get back to you soon.');
-                    contactForm.reset();
-                } else {
-                    throw new Error(result.error || 'Message sending failed');
-                }
+                // Show success message
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+                
+                // Log the message (for testing)
+                console.log('Message saved:', data);
             } catch (error) {
-                alert('Error: ' + error.message);
+                alert('Error sending message. Please try again.');
+                console.error('Contact form error:', error);
             }
         });
     }
