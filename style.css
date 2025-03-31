@@ -575,25 +575,25 @@ header.scrolled {
 
 /* Assigning Unique Images to Each Card */
 .programs .swiper-slide:nth-child(1) .cardimage {
-    background-image: url('/images/programs/1.jpg');
+    background-image: url('/images/Home/programs/1.jpg');
 }
 .programs .swiper-slide:nth-child(2) .cardimage {
-    background-image: url('/images/programs/2.jpg');
+    background-image: url('/images/Home/programs/2.jpg');
 }
 .programs .swiper-slide:nth-child(3) .cardimage {
-    background-image: url('/images/programs/3.jpg');
+    background-image: url('/images/Home/programs/3.jpg');
 }
 .programs .swiper-slide:nth-child(4) .cardimage {
-    background-image: url('/images/programs/4.jpg');
+    background-image: url('/images/Home/programs/4.jpg');
 }
 .programs .swiper-slide:nth-child(5) .cardimage {
-    background-image: url('/images/programs/5.jpg');
+    background-image: url('/images/Home/programs/5.jpg');
 }
 .programs .swiper-slide:nth-child(6) .cardimage {
-    background-image: url('/images/programs/6.jpg');
+    background-image: url('/images/Home/programs/6.jpg');
 }
 .programs .swiper-slide:nth-child(7) .cardimage {
-    background-image: url('/images/programs/7.jpg');
+    background-image: url('/images/Home/programs/7.jpg');
 }
 
 /* Titles & Donation Goal */
