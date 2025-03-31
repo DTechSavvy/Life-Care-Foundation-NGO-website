@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life Care Foundation - Donate & Make a Difference</title>
-    <link rel="stylesheet" href="/donationpage.css">
+    <link rel="stylesheet" href="./donationpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -249,18 +249,14 @@
     <div id="success-modal" class="modal">
         <div class="modal-content success-message">
             <span class="close-btn" onclick="closeSuccessModal()">&times;</span>
-            <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
+            <i class="fas fa-check-circle"></i>
             <h2>Thank You!</h2>
-            <p>Your donation has been successfully processed.</p>
-            <p>A receipt has been sent to your email address.</p>
-            <p class="donation-details">Amount: ₹<span id="success-amount">0</span></p>
-            <button class="ok-btn" onclick="closeSuccessModal()">OK</button>
+            <p>Your donation of ₹<span id="success-amount"></span> has been processed successfully.</p>
+            <p>Together, we can make a difference!</p>
         </div>
     </div>
 
-    <script src="/javascripts/donation.js"></script>
+    <script src="./donation.js"></script>
 </body>
 </html>
 
