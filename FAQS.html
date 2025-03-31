@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Life Care Foundations</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">  
+    <link rel="stylesheet" href="/css/FAQS.css">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-red-500 text-white text-center py-5 shadow-md">
+        <h1 class="text-3xl font-bold">Frequently Asked Questions</h1>
+        <p class="text-sm mt-1">Find answers to common questions about Life Care Foundations.</p>
+    </header>
+
+    <!-- FAQ Container -->
+    <div class="container mx-auto my-10 p-6 bg-white shadow-lg rounded-md">
+        
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            
+            <!-- FAQ Item 1 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is Life Care Foundations and its mission?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Life Care Foundations is a non-profit organization dedicated to improving lives through education, healthcare, and social welfare programs.
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    How can I volunteer for Life Care Foundations?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    You can sign up as a volunteer through our <a href="volunteer.html" class="text-blue-500 hover:underline">Volunteer Page</a>. We welcome individuals passionate about making a difference.
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    How are the donations used?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Donations are used to fund education programs, provide healthcare assistance, distribute food and essential supplies, and run various social initiatives.
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    Is my donation tax-deductible?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Yes, all donations to Life Care Foundations are tax-deductible as per applicable laws. You will receive a receipt for your contribution.
+                </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    Can I sponsor a child’s education?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Yes! You can sponsor a child's education by visiting our <a href="sponsor.html" class="text-blue-500 hover:underline">Sponsorship Page</a> and selecting a program that aligns with your contribution goals.
+                </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    How can I stay updated on upcoming events?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    You can check our <a href="events.html" class="text-blue-500 hover:underline">Events Page</a> or subscribe to our newsletter for updates on upcoming events.
+                </div>
+            </div>
+
+            <!-- FAQ Item 7 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    How do I contact Life Care Foundations?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    You can contact us via email at <a href="mailto:support@lifecarefoundations.org" class="text-blue-500 hover:underline">support@lifecarefoundations.org</a> or through our <a href="contact.html" class="text-blue-500 hover:underline">Contact Page</a>.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>Life Care Foundation</h3>
+                <p>We are a non-profit organization dedicated to improving lives and creating sustainable change across India.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Life Care Foundation. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for FAQ Collapse -->
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector(".faq-icon");
+
+                if (answer.style.display === "block") {
+                    answer.style.display = "none";
+                    icon.textContent = "+";
+                } else {
+                    answer.style.display = "block";
+                    icon.textContent = "-";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
