@@ -1,0 +1,45 @@
+/* Subscription Success Page Styles */
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #efefef;
+    font-family: 'Poppins', sans-serif;
+}
+
+.success-box {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+}
+
+.success-box h1 {
+    font-size: 24px;
+    color: #d43c18;
+}
+
+.success-box p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #555;
+}
+
+.back-home {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #d43c18;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.back-home:hover {
+    background-color: #a82e13;
+}

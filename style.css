@@ -365,6 +365,8 @@ header .logo img {
     max-height: 100px; /* Keeps the logo size the same */
     transition: all 0.3s ease-in-out;
 }
+/* Container for particles (around logo only) */
+
 
 /* Navigation Menu */
 header nav ul {
@@ -573,25 +575,25 @@ header.scrolled {
 
 /* Assigning Unique Images to Each Card */
 .programs .swiper-slide:nth-child(1) .cardimage {
-    background-image: url('/images/programs/1.jpg');
+    background-image: url('/images/Home/programs/1.jpg');
 }
 .programs .swiper-slide:nth-child(2) .cardimage {
-    background-image: url('/images/programs/2.jpg');
+    background-image: url('/images/Home/programs/2.jpg');
 }
 .programs .swiper-slide:nth-child(3) .cardimage {
-    background-image: url('/images/programs/3.jpg');
+    background-image: url('/images/Home/programs/3.jpg');
 }
 .programs .swiper-slide:nth-child(4) .cardimage {
-    background-image: url('/images/programs/4.jpg');
+    background-image: url('/images/Home/programs/4.jpg');
 }
 .programs .swiper-slide:nth-child(5) .cardimage {
-    background-image: url('/images/programs/5.jpg');
+    background-image: url('/images/Home/programs/5.jpg');
 }
 .programs .swiper-slide:nth-child(6) .cardimage {
-    background-image: url('/images/programs/6.jpg');
+    background-image: url('/images/Home/programs/6.jpg');
 }
 .programs .swiper-slide:nth-child(7) .cardimage {
-    background-image: url('/images/programs/7.jpg');
+    background-image: url('/images/Home/programs/7.jpg');
 }
 
 /* Titles & Donation Goal */
@@ -887,8 +889,262 @@ header.scrolled {
     }
 }
 
+/*Evnts section End */
 
+/*gallary section start */
+/* Ensure proper grid layout */
+.gallery {
+    padding: 50px 0;
+}
 
+/* Maintain 4 columns with proper spacing */
+.gallery .galleryContainer {
+    column-count: 4;
+    column-gap: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Prevents images from stretching too wide */
+}
+
+/* Ensure items maintain aspect ratio */
+.gallery .galleryContainer .item {
+    position: relative;
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Images should maintain their aspect ratio */
+.gallery .galleryContainer img {
+    width: 100%;
+    height: auto; /* Ensures images scale proportionally */
+    display: block;
+    border-radius: 5px; /* Slightly rounded corners for better aesthetics */
+    transition: transform 0.4s ease;
+}
+
+/* Title overlay styling */
+.gallery .galleryContainer .title {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+/* Hover effect */
+.gallery .galleryContainer .item:hover .title {
+    opacity: 1;
+}
+
+.gallery .galleryContainer .item:hover img {
+    transform: scale(1.05);
+}
+
+/* Lightbox Styles */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.lightbox .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox .close:hover {
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .gallery .galleryContainer {
+        column-count: 3;
+        column-gap: 15px; /* Reduce spacing for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery .galleryContainer {
+        column-count: 2;
+        column-gap: 10px;
+    }
+
+    .sectionTitle {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery .galleryContainer {
+        column-count: 1;
+    }
+}
+/* gallery ends here */
+/* footer section starts here */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 60px 5% 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-about,
+.footer-links,
+.footer-useful-links,
+.footer-contact,
+.footer-newsletter {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* 🔹 Section Titles */
+.footer-about h3,
+.footer-links h3,
+.footer-useful-links h3,
+.footer-contact h3,
+.footer-newsletter h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #ff5252;
+}
+
+/* 🔹 About Section */
+.footer-about p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+/* 🔹 Social Media Icons - Visible and Stylish */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 22px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+    color: #ff5252;
+    transform: scale(1.2);
+}
+
+/* 🔹 Quick Links & Useful Links with Bullet Points */
+.footer-links ul,
+.footer-useful-links ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.footer-links ul li,
+.footer-useful-links ul li {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.footer-links ul li a,
+.footer-useful-links ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover,
+.footer-useful-links ul li a:hover {
+    color: #ff5252;
+}
+
+/* 🔹 Contact Section - Fixed Icon Visibility */
+.footer-contact p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+
+.footer-contact p i {
+    margin-right: 10px;
+    color: #ff5252;
+    font-size: 18px;
+}
+
+/* 🔹 Newsletter Section - Compact & Clean */
+.footer-newsletter form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 280px;
+}
+
+.footer-newsletter input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.footer-newsletter button {
+    padding: 8px;
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.footer-newsletter button:hover {
+    background-color: #e04646;
+}
+
+/* 🔹 Footer Bottom Section */
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+}
 
 
 

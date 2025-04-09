@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact us.css"> <!-- Fixed file name spacing issue -->
+</head>
+<body>
+  
+  <div class="contactUs"> <!-- Fixed class name -->
+    
+    <!-- Title Section -->
+    <div class="title">
+        <h2>Get in Touch</h2>
+    </div>
+
+    <div class="box">
+      
+      <!-- Contact Form -->
+      <div class="contact form"> 
+        <h3>Send Us a Message</h3>
+        <form action="/contact confirmation.html" onsubmit="return redirectToConfirmation();">
+          <div class="formBox">
+            
+            <div class="row50">
+              <div class="inputBox">
+                <span>First Name</span>
+                <input type="text" placeholder="Noel">
+              </div>
+              <div class="inputBox">
+                <span>Last Name</span>
+                <input type="text" placeholder="Tony">
+              </div>
+            </div>
+
+            <div class="row50">
+              <div class="inputBox">
+                <span>Email</span>
+                <input type="email" placeholder="johndoe234@email.com">
+              </div>
+              <div class="inputBox">
+                <span>Mobile</span>
+                <input type="tel" placeholder="+91 987 654 3210">
+              </div>
+            </div>
+
+            <div class="row100">
+              <div class="inputBox">
+                <span>Message</span>
+                <textarea placeholder="Write your message..."></textarea>
+              </div>
+            </div>
+
+            <div class="row100">
+              <div class="inputBox">
+                <input type="submit" value="Send">
+              </div>
+            </div>
+
+          </div>
+        </form>
+        <script>
+          function redirectToConfirmation() {
+              window.location.href = " contact confirmation.html";
+              return false; // Prevents actual form submission
+          }
+      </script>
+      </div>
+
+      <!-- Contact Info Section -->
+      <div class="contact info">
+        <h3>Contact Us</h3>
+        <div class="infoBox">
+          <div>
+            <span><ion-icon name="location"></ion-icon></span>
+            <p> Dr. K. M. Vasudevan Pillai Campus, Plot No. 10, Sector 16, New Panvel, Navi Mumbai, Maharashtra 410206 <br>INDIA</p>
+          </div>
+          <div>
+            <span><ion-icon name="mail"></ion-icon></span>
+            <a href="mailto:Lorem@email.com">info@lifecare_fdn.org</a>
+          </div>
+          <div>
+            <span><ion-icon name="call"></ion-icon></span>
+            <a href="tel:+919876543210">+91 987 654 3210</a>
+          </div>
+          <!-- Social Media Icons -->
+          <ul class="sci">
+            <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+            <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+            <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+            <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Google Map -->
+      <div class="contact map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.6694343953413!2d73.12509517550887!3d18.990200982196868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7e866de88667f%3A0xc1c5d5badc610f5f!2sPillai%20College%20of%20Engineering%2C%20New%20Panvel%20(Autonomous)!5e0!3m2!1sen!2sin!4v1738175631845!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+    </div> <!-- End of Box -->
+
+  </div> <!-- End of ContactUs -->
+
+  <!-- Ionicons Script -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

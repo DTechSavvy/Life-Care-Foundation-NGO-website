@@ -4,40 +4,67 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Life Care Foundations</title>
-        <link rel="stylesheet" href="/style.css" />
+        <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
         <script src="/javascripts/scriptvolunteering.js"></script>
         
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+ 
     </head>
     <body>
         <!-- Content -->
          <div class="fullcontainer banner" id="homesection">
         <header>
-           <div class="container">
+          <div class="container"> 
              <div class="logo">
-                <img src="/images/Home/sliders/logo-removebg.png" alt="NGO logo" />
-             </div>
-             <nav>
+             <img src="/images/gallery/logo-removebg.png" alt="NGO logo" />
+                </div>
+                <!-- Include GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        gsap.from(".logo img", {
+            opacity: 0,
+            scale: 0.8,
+            rotate: -15,
+            duration: 1.2,
+            ease: "power2.out"
+        });
+
+        gsap.to(".logo img", {
+            y: 10,
+            repeat: -1,
+            yoyo: true,
+            duration: 2,
+            ease: "sine.inOut"
+        });
+
+        document.querySelector(".logo img").addEventListener("mouseenter", function () {
+            gsap.to(this, { rotate: 10, duration: 0.3, ease: "power2.out" });
+        });
+
+        document.querySelector(".logo img").addEventListener("mouseleave", function () {
+            gsap.to(this, { rotate: 0, duration: 0.3, ease: "power2.out" });
+        });
+    });
+</script>
+
+
+                 <nav>
                 <ul>
                   <li>
                     <a href="#homesection">Home</a>
                   </li>
                   <li>
-                    <a href="Javascript:void(0);">Features</a>
-                  </li>
-                  <li>
-                    <a href="Javascript:void(0);">Campagin</a>
+                    <a href="#programssection">Campagin</a>
                   </li>
                   <li>
                     <a href="#educationsection">Education</a>
                   </li>
                   <li>
-                    <a href="/news.html">News</a>
-                  </li>
-                  <li>
-                    <a href="/Login.html">Login</a>
+                    <a href="news.html">News</a>
                   </li>
                 </ul>
              </nav>
@@ -53,7 +80,7 @@
               <div class="slide-content">
                 <h1>Together We Can Save Lives</h1>
                 <p>Join us in our mission to bring hope and change.</p>
-                <a href="/donationpage.html">Donate Now</a>
+                <a href="donationpage.html">Donate Now</a>
               </div>
             </div>
       
@@ -63,7 +90,7 @@
               <div class="slide-content">
                 <h1>Empowering Communities</h1>
                 <p>Together, we can make a difference.</p>
-                <a href="#features">Learn More</a>
+                <a href="about us.html">Learn More</a>
               </div>
             </div>
       
@@ -133,7 +160,7 @@
                       <p>
                           "Your generosity today empowers dreams for tomorrow. Make a difference with your donation."
                       </p>
-                      <a href="/donationpage.html"><button>Donate now</button></a>
+                      <a href="donationpage.html"><button>Donate now</button></a>
                   </div>
       
                   <div class="volunteerbox">
@@ -141,7 +168,7 @@
                       <p>
                           "Join us in making a positive change. Volunteer and be the light in someone’s life."
                       </p>
-                      <a href="/volunteer.html"><button>Become a volunteer</button></a>
+                      <a href="volunteeringpage.html"><button>Become a volunteer</button></a>
                   </div>
       
                   <div class="eventsbox">
@@ -157,7 +184,7 @@
                       <p>
                           "Got questions? Need support? We’re here to help. Reach out to us anytime."
                       </p>
-                      <a href="/contact us.html"><button>Contact us</button></a>
+                      <a href="contact us.html"><button>Contact us</button></a>
                   </div>
               </div>
           </div>
@@ -181,7 +208,7 @@
                                 <div class="progress-bar" data-raised="450000" data-goal="700000"></div>
                                 <span class="progress-text">0%</span>
                             </div>
-                            <a href="/donationpage.html">
+                            <a href="donationpage.html">
                             <button>Donate now</button>
                             </a>
                         </div>
@@ -199,7 +226,7 @@
                                 <div class="progress-bar" data-raised="50000" data-goal="200000"></div>
                                 <span class="progress-text">0%</span>
                             </div>
-                            <a href="/donationpage.html">
+                            <a href="donationpage.html">
                                 <button>Donate now</button>
                                 </a>
                         </div>
@@ -217,7 +244,7 @@
                                 <div class="progress-bar" data-raised="100000" data-goal="350000"></div>
                                 <span class="progress-text">0%</span>
                             </div>
-                            <a href="/donationpage.html">
+                            <a href="donationpage.html">
                                 <button>Donate now</button>
                                 </a>
                         </div>
@@ -235,7 +262,7 @@
                                 <div class="progress-bar" data-raised="60000" data-goal="250000"></div>
                                 <span class="progress-text">0%</span>
                             </div>
-                            <a href="/donationpage.html">
+                            <a href="donationpage.html">
                                 <button>Donate now</button>
                                 </a>
                         </div>
@@ -253,7 +280,7 @@
                                 <div class="progress-bar" data-raised="40000" data-goal="200000"></div>
                                 <span class="progress-text">0%</span>
                             </div>
-                            <a href="/donationpage.html">
+                            <a href="donationpage.html">
                                 <button>Donate now</button>
                                 </a>
                         </div>
@@ -271,7 +298,7 @@
                                 <div class="progress-bar" data-raised="65000" data-goal="500000"></div>
                                 <span class="progress-text">0%</span>
                             </div>
-                            <a href="/donationpage.html">
+                            <a href="donationpage.html">
                                 <button>Donate now</button>
                                 </a>
                         </div>
@@ -289,7 +316,7 @@
                                 <div class="progress-bar" data-raised="200000" data-goal="450000"></div>
                                 <span class="progress-text">0%</span>
                             </div>
-                            <a href="/donationpage.html">
+                            <a href="donationpage.html">
                                 <button>Donate now</button>
                                 </a>
                         </div>
@@ -376,7 +403,7 @@
     <section class="education" id="educationsection">
 
       <video autoplay muted loop class="videoPlayer">
-        <source src="/video/childrens1.mp4" type="video/mp4">
+        <source src="/images/Home/education/childrens1.mp4" type="video/mp4">
         your browser does not support HTML5 video
       </video>
       <div class="container">
@@ -390,8 +417,7 @@
             "Education is the most powerful tool we possess, transforming lives and futures with every lesson learned. It opens doors to endless opportunities, empowering individuals to break free from the chains of ignorance and poverty. By nurturing young minds today, we build a brighter, more compassionate world for tomorrow."
           </p>
           <a href="/donationpage.html">
-          <button>Donate Now</button>
-          </a>
+          <button>Donate now</button></a>
         </div>
       </div>
     </section>
@@ -405,7 +431,7 @@
                 <!-- Event 1 -->
                 <div class="event-card">
                     <h3 class="event-title">
-                        <a href="#" class="event-link">Initial Volunteer Briefing</a>
+                        <a href="/volunteeringpage.html" class="event-link">Initial Volunteer Briefing</a>
                     </h3>
                     <p class="event-summary">Join us for an introductory session to help volunteers get started on their journey of making a difference!</p>
                     <p class="event-date">📅 April 14, 2025 | 🕗 08:00 AM</p>
@@ -420,7 +446,7 @@
                 <!-- Event 2 -->
                 <div class="event-card">
                     <h3 class="event-title">
-                        <a href="#" class="event-link">Empowerment Workshop</a>
+                        <a href="/volunteeringpage.html" class="event-link">Empowerment Workshop</a>
                     </h3>
                     <p class="event-summary">A powerful session focused on skill development, self-confidence, and leadership training.</p>
                     <p class="event-date">📅 May 20, 2025 | 🕙 10:30 AM</p>
@@ -435,7 +461,7 @@
                 <!-- Event 3 -->
                 <div class="event-card">
                     <h3 class="event-title">
-                        <a href="#" class="event-link">Awareness Campaign</a>
+                        <a href="/volunteeringpage.html" class="event-link">Awareness Campaign</a>
                     </h3>
                     <p class="event-summary">Raising awareness on crucial social issues and promoting meaningful action.</p>
                     <p class="event-date">📅 June 10, 2025 | 🕘 09:00 AM</p>
@@ -450,7 +476,7 @@
                 <!-- Event 4 -->
                 <div class="event-card">
                     <h3 class="event-title">
-                        <a href="#" class="event-link">Inspire and Inform Summit</a>
+                        <a href="/volunteeringpage.html" class="event-link">Inspire and Inform Summit</a>
                     </h3>
                     <p class="event-summary">A high-energy conference designed to inspire and educate individuals on leadership and innovation.</p>
                     <p class="event-date">📅 July 05, 2025 | 🕦 11:45 AM</p>
@@ -489,8 +515,161 @@
         setInterval(updateCountdowns, 1000);
         updateCountdowns();
     </script>
+    <!--Events section ends here-->
+
+    <!--gallery section starts here-->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="sectionTitle">Gallery</h2> <!-- Section title format fixed -->
     
-  
+            <div class="galleryContainer">
+                <div class="item">
+                    <span class="title">Image title</span>
+                    <img src="/images/gallery/1.jpg" alt="Gallery Image 1">
+                </div>
+    
+                <div class="item">
+                    <span class="title">Image title</span>
+                    <img src="/images/gallery/2.jpg" alt="Gallery Image 2">
+                </div>
+    
+                <div class="item">
+                    <span class="title">Image title</span>
+                    <img src="/images/gallery/3.jpg" alt="Gallery Image 3">
+                </div>
+    
+                <div class="item">
+                    <span class="title">Image title</span>
+                    <img src="/images/gallery/4.jpg" alt="Gallery Image 4">
+                </div>
+    
+                <div class="item">
+                    <span class="title">Image title</span>
+                    <img src="/images/gallery/5.jpg" alt="Gallery Image 5">
+                </div>
+    
+                <div class="item">
+                    <span class="title">Image title</span>
+                    <img src="/images/gallery/6.jpg" alt="Gallery Image 6">
+                </div>
+    
+                <div class="item">
+                    <span class="title">Image title</span>
+                    <img src="/images/gallery/7.jpg" alt="Gallery Image 7">
+                </div>
+    
+                <div class="item">
+                    <span class="title">Image title</span>
+                    <img src="/images/gallery/8.jpg" alt="Gallery Image 8">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img id="lightbox-img" src="" alt="Expanded Image">
+    </div>
+    
+    <!-- Internal JavaScript for Lightbox -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const images = document.querySelectorAll(".galleryContainer .item img"); // Fixed class name
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImg = document.getElementById("lightbox-img");
+            const closeBtn = document.querySelector(".lightbox .close");
+    
+            images.forEach(image => {
+                image.addEventListener("click", function () {
+                    console.log("Image clicked:", this.src); // Debugging log
+                    lightboxImg.src = this.src;
+                    lightbox.classList.add("active");
+                });
+            });
+    
+            closeBtn.addEventListener("click", function () {
+                lightbox.classList.remove("active");
+            });
+    
+            lightbox.addEventListener("click", function (event) {
+                if (event.target !== lightboxImg) {
+                    lightbox.classList.remove("active");
+                }
+            });
+        });
+    </script>
+   <footer>
+    <div class="footer-content">
+        <div class="footer-about">
+            <h3>Life Care Foundation</h3>
+            <p>We are a non-profit organization dedicated to improving lives and creating sustainable change across India.</p>
+            <div class="social-icons">
+                <a href="#" style="color: white; font-size: 22px; margin-right: 15px; transition: color 0.3s ease-in-out;" 
+                   onmouseover="this.style.color='#d43c18'" onmouseout="this.style.color='white'">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" style="color: white; font-size: 22px; margin-right: 15px; transition: color 0.3s ease-in-out;" 
+                   onmouseover="this.style.color='#d43c18'" onmouseout="this.style.color='white'">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" style="color: white; font-size: 22px; margin-right: 15px; transition: color 0.3s ease-in-out;" 
+                   onmouseover="this.style.color='#d43c18'" onmouseout="this.style.color='white'">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" style="color: white; font-size: 22px; transition: color 0.3s ease-in-out;" 
+                   onmouseover="this.style.color='#d43c18'" onmouseout="this.style.color='white'">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about us.html">About Us</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="volunteeringpage.html">Get Involved</a></li>
+                <li><a href="contact us.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-useful-links">
+            <h3>Useful Links</h3>
+            <ul>
+                <li><a href="Terms of use.html">Terms of Use</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="FAQS.html">FAQs</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p>
+                <i class="fas fa-map-marker-alt" style="color: #ff5252; margin-right: 10px;"></i> 123 NGO Street, Mumbai, India
+            </p>
+            <p>
+                <i class="fas fa-phone" style="color: #ff5252; margin-right: 10px;"></i> +91 98765 43210
+            </p>
+            <p>
+                <i class="fas fa-envelope" style="color: #ff5252; margin-right: 10px;"></i> info@lifecare_fdn.org
+            </p>
+        </div>
+
+        <div class="footer-newsletter">
+            <h3>Subscribe to Our Newsletter</h3>
+            <form action="subscription-success.html" method="get">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Life Care Foundation. All Rights Reserved.</p>
+    </div>
+</footer>
+
     </body>
 </html>
-
