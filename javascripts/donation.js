@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Load campaigns from database
 function loadCampaigns() {
-  fetch('get_campaigns.php')
+  fetch('/database/php/get_campaigns.php')
     .then(response => response.json())
     .then(data => {
       if (data.status === 'success') {
@@ -58,7 +58,7 @@ function createCampaignCard(campaign) {
 
 // Fetch campaign progress from database
 function fetchCampaignProgress() {
-  fetch('get_campaign_progress.php')
+  fetch('/database/php/get_campaign_progress.php')
     .then(response => response.json())
     .then(data => {
       if (data.status === 'success') {
@@ -212,7 +212,7 @@ function processPayment() {
   formData.append('recurring', document.getElementById("recurring").checked ? '1' : '0');
 
   // Send to database
-  fetch("process_donation.php", {
+  fetch("/database/php/process_donation.php", {
     method: "POST",
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
