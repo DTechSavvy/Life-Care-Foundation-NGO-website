@@ -45,17 +45,74 @@ try {
         throw new Exception("Error creating table: " . $conn->error);
     }
 
-    // Validate and sanitize input data
-    if (!isset($_POST['name']) || !isset($_POST['email']) || !isset($_POST['phone']) || !isset($_POST['amount'])) {
-        throw new Exception("Missing required fields");
+    // Create campaign goals table
+    $create_campaigns_table = "CREATE TABLE IF NOT EXISTS campaign_goals (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        campaign_name VARCHAR(100) NOT NULL,
+        target_amount DECIMAL(10,2) NOT NULL,
+        current_amount DECIMAL(10,2) DEFAULT 0,
+        description TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )";
+
+    if (!$conn->query($create_campaigns_table)) {
+        throw new Exception("Error creating campaign goals table: " . $conn->error);
     }
 
-    $name = $conn->real_escape_string($_POST['name']);
-    $email = $conn->real_escape_string($_POST['email']);
-    $phone = $conn->real_escape_string($_POST['phone']);
-    $amount = floatval($_POST['amount']);
-    $campaign = isset($_POST['campaign']) ? $conn->real_escape_string($_POST['campaign']) : '';
-    $recurring = isset($_POST['recurring']) ? ($_POST['recurring'] === '1' ? 1 : 0) : 0;
+    // Insert default campaign goals if they don't exist
+    $default_campaigns = [
+        ['Education for All', 100000, 'Support education for underprivileged children'],
+        ['Healthcare Initiative', 150000, 'Provide healthcare to rural communities'],
+        ['Environmental Protection', 200000, 'Protect and restore natural habitats'],
+        ['Women Empowerment', 80000, 'Support women\'s education and skill development'],
+        ['Clean Water Project', 120000, 'Provide clean water access to communities']
+    ];
+
+    foreach ($default_campaigns as $campaign) {
+        $check_sql = "SELECT id FROM campaign_goals WHERE campaign_name = '" . $conn->real_escape_string($campaign[0]) . "'";
+        $result = $conn->query($check_sql);
+        
+        if ($result->num_rows == 0) {
+            $insert_sql = "INSERT INTO campaign_goals (campaign_name, target_amount, description) 
+                          VALUES ('" . $conn->real_escape_string($campaign[0]) . "', 
+                                 " . floatval($campaign[1]) . ", 
+                                 '" . $conn->real_escape_string($campaign[2]) . "')";
+            $conn->query($insert_sql);
+        }
+    }
+
+    // Validate and sanitize input data
+    $name = $conn->real_escape_string($_POST['name'] ?? '');
+    $email = $conn->real_escape_string($_POST['email'] ?? '');
+    $phone = $conn->real_escape_string($_POST['phone'] ?? '');
+    $amount = floatval($_POST['amount'] ?? 0);
+    $campaign = $conn->real_escape_string($_POST['campaign'] ?? '');
+    $recurring = isset($_POST['recurring']) ? 1 : 0;
+
+    // Validate name (no numbers allowed)
+    if (!preg_match('/^[a-zA-Z\s]+$/', $name)) {
+        throw new Exception("Name should only contain letters and spaces");
+    }
+
+    // Validate phone number (exactly 10 digits)
+    if (!preg_match('/^\d{10}$/', $phone)) {
+        throw new Exception("Phone number must be exactly 10 digits");
+    }
+
+    // Validate email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        throw new Exception("Invalid email format");
+    }
+
+    // Validate amount
+    if ($amount <= 0) {
+        throw new Exception("Amount must be greater than 0");
+    }
+
+    // Validate required fields
+    if (empty($name) || empty($email) || empty($phone)) {
+        throw new Exception("All fields are required");
+    }
 
     // Insert data into database
     $sql = "INSERT INTO donations (name, email, phone, amount, campaign, recurring) 
@@ -63,6 +120,16 @@ try {
 
     if (!$conn->query($sql)) {
         throw new Exception("Error inserting data: " . $conn->error);
+    }
+
+    // Update campaign progress if campaign is specified
+    if (!empty($campaign)) {
+        $update_progress = "UPDATE campaign_goals 
+                           SET current_amount = current_amount + $amount 
+                           WHERE campaign_name = '$campaign'";
+        if (!$conn->query($update_progress)) {
+            error_log("Error updating campaign progress: " . $conn->error);
+        }
     }
 
     $donation_id = $conn->insert_id;

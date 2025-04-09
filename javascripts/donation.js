@@ -2,12 +2,95 @@
 let currentSlide = 0;
 let selectedAmount = 0;
 let selectedCampaign = "";
+let campaignProgress = {};
 
 // Initialize when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   updateSliderPosition();
   initializeQuotes();
+  loadCampaigns();
 });
+
+// Load campaigns from database
+function loadCampaigns() {
+  fetch('get_campaigns.php')
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        const campaignSlider = document.querySelector('.campaign-slider');
+        campaignSlider.innerHTML = ''; // Clear existing campaigns
+        
+        data.campaigns.forEach(campaign => {
+          const campaignCard = createCampaignCard(campaign);
+          campaignSlider.appendChild(campaignCard);
+        });
+        
+        // Initialize slider after loading campaigns
+        updateSliderPosition();
+      }
+    })
+    .catch(error => console.error('Error loading campaigns:', error));
+}
+
+// Create campaign card HTML
+function createCampaignCard(campaign) {
+  const card = document.createElement('div');
+  card.className = 'campaign-card';
+  card.setAttribute('data-campaign', campaign.name);
+  
+  // Get a relevant image based on campaign name
+  const imageKeyword = campaign.name.toLowerCase().replace(/\s+/g, '');
+  
+  card.innerHTML = `
+     
+    <h3>${campaign.name}</h3>
+    <p>${campaign.description}</p>
+    <div class="progress-container">
+      <div class="progress-bar" style="width: ${campaign.progress}%"></div>
+      <div class="progress-text">${campaign.progress}%</div>
+    </div>
+    <div class="amount-text">₹${campaign.current.toLocaleString()} / ₹${campaign.target.toLocaleString()}</div>
+    <button onclick="openDonateForm('${campaign.name}')">Donate Now</button>
+  `;
+  
+  return card;
+}
+
+// Fetch campaign progress from database
+function fetchCampaignProgress() {
+  fetch('get_campaign_progress.php')
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        campaignProgress = {};
+        data.campaigns.forEach(campaign => {
+          campaignProgress[campaign.name] = campaign;
+          updateCampaignCard(campaign);
+        });
+      }
+    })
+    .catch(error => console.error('Error fetching campaign progress:', error));
+}
+
+// Update campaign card with progress
+function updateCampaignCard(campaign) {
+  const card = document.querySelector(`[data-campaign="${campaign.name}"]`);
+  if (!card) return;
+
+  const progressBar = card.querySelector('.progress-bar');
+  const progressText = card.querySelector('.progress-text');
+  const amountText = card.querySelector('.amount-text');
+
+  if (progressBar) {
+    progressBar.style.width = `${campaign.progress}%`;
+  }
+  if (progressText) {
+    progressText.textContent = `${campaign.progress}%`;
+  }
+  if (amountText) {
+    amountText.textContent = `₹${campaign.current.toLocaleString()} / ₹${campaign.target.toLocaleString()}`;
+  }
+}
 
 // Slider functionality
 function moveSlider(direction) {
@@ -93,13 +176,25 @@ function processPayment() {
   const email = document.getElementById("email").value.trim();
   const phone = document.getElementById("phone").value.trim();
 
-  if (!name || !email || !phone || selectedAmount <= 0) {
-    alert("Please fill all fields and select a donation amount.");
+  // Validate name (no numbers allowed)
+  if (!/^[a-zA-Z\s]+$/.test(name)) {
+    alert("Name should only contain letters and spaces");
+    return;
+  }
+
+  // Validate phone number (exactly 10 digits)
+  if (!/^\d{10}$/.test(phone)) {
+    alert("Phone number must be exactly 10 digits");
     return;
   }
 
   if (!validateEmail(email)) {
     alert("Please enter a valid email address.");
+    return;
+  }
+
+  if (selectedAmount <= 0) {
+    alert("Please select a donation amount.");
     return;
   }
 
@@ -124,24 +219,26 @@ function processPayment() {
     },
     body: formData.toString()
   })
-  .then(() => {
-    // Continue with UI flow regardless of response
-    setTimeout(() => {
-      paymentModal.style.display = "none";
-      closeDonateForm();
-      document.getElementById("success-amount").textContent = selectedAmount;
-      document.getElementById("success-modal").style.display = "block";
-    }, 2000);
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'success') {
+      // Update progress bars after successful donation
+      loadCampaigns();
+      
+      // Continue with UI flow
+      setTimeout(() => {
+        paymentModal.style.display = "none";
+        closeDonateForm();
+        document.getElementById("success-amount").textContent = selectedAmount;
+        document.getElementById("success-modal").style.display = "block";
+      }, 2000);
+    } else {
+      alert(data.message || "An error occurred while processing your donation.");
+    }
   })
   .catch(error => {
     console.error('Error:', error);
-    // Continue with UI flow even if there's an error
-    setTimeout(() => {
-      paymentModal.style.display = "none";
-      closeDonateForm();
-      document.getElementById("success-amount").textContent = selectedAmount;
-      document.getElementById("success-modal").style.display = "block";
-    }, 2000);
+    alert("An error occurred while processing your donation. Please try again.");
   });
 }
 
