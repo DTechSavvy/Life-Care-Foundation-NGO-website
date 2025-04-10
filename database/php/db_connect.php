@@ -1,8 +1,8 @@
 <?php
-$db_host = 'localhost';
-$db_user = 'root';      // Your MySQL username
-$db_pass = '';          // Your MySQL password
-$db_name = 'ngo_donations';
+$db_host = 'sql100.infinityfree.com';
+$db_user = 'if0_38719579';      // Your MySQL username
+$db_pass = 'lifecare25';          // Your MySQL password
+$db_name = 'if0_38719579_life_care';
 
 // Create connection with error handling
 try {
