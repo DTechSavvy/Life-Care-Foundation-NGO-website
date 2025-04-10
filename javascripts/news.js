@@ -12,7 +12,7 @@ burger.addEventListener('click', () => {
         if (link.style.animation) {
             link.style.animation = '';
         } else {
-            link.style.animation = navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s; // Fixed template literal syntax
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`; // Fixed template literal syntax
         }
     });
 
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (iframe) {
             // Replace placeholder src with actual video URL
             const videoId = 'example'; // Replace with actual video ID
-            iframe.src = https://www.youtube.com/embed/${videoId}; // Fixed template literal syntax
+            iframe.src = `https://www.youtube.com/embed/${videoId}`; // Fixed template literal syntax
         }
     };
 
