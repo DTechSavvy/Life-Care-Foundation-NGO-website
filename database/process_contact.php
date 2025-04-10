@@ -1,6 +1,24 @@
 <?php
 header('Content-Type: application/json');
-require_once 'config.php';
+
+// Database configuration
+$db_host = 'sql100.infinityfree.com';
+$db_user = 'if0_38719579';
+$db_pass = 'lifecare25';
+$db_name = 'if0_38719579_life_care';
+
+// Create connection
+$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+// Check connection
+if ($conn->connect_error) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'error' => 'Database connection failed: ' . $conn->connect_error
+    ]);
+    exit();
+}
 
 // Check if the request is POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -65,7 +83,7 @@ try {
     ]);
     
     $stmt->close();
-    
+
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode([
@@ -75,4 +93,4 @@ try {
 }
 
 $conn->close();
-?> 
+?>
