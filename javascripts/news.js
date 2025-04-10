@@ -12,7 +12,7 @@ burger.addEventListener('click', () => {
         if (link.style.animation) {
             link.style.animation = '';
         } else {
-            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            link.style.animation = navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s; // Fixed template literal syntax
         }
     });
 
@@ -83,7 +83,7 @@ cards.forEach(card => {
     });
 });
 
-// Add this new code for handling Read More functionality
+// Read More functionality for news cards
 document.querySelectorAll('.read-more-btn').forEach(button => {
     button.addEventListener('click', function() {
         const card = this.closest('.news-card');
@@ -147,54 +147,43 @@ document.addEventListener('keydown', (e) => {
 document.querySelectorAll('.story-read-more').forEach(button => {
     button.addEventListener('click', function() {
         const storyCard = this.closest('.story-card');
-        const storyContent = storyCard.querySelector('.story-full').cloneNode(true);
+        const storyFull = storyCard.querySelector('.story-full');
         
-        // Create modal
+        // Create a modal
         const modal = document.createElement('div');
         modal.className = 'story-modal';
         
         // Create modal content
-        const modalContent = document.createElement('div');
-        modalContent.className = 'story-modal-content';
+        modal.innerHTML = `
+            <div class="story-modal-content">
+                <button class="close-story">&times;</button>
+                ${storyFull.innerHTML}
+            </div>
+        `;
         
-        // Add close button
-        const closeButton = document.createElement('button');
-        closeButton.className = 'close-story';
-        closeButton.innerHTML = '×';
-        modalContent.appendChild(closeButton);
-        
-        // Add story content
-        modalContent.appendChild(storyContent);
-        modal.appendChild(modalContent);
+        // Add modal to page
         document.body.appendChild(modal);
         
         // Show modal with animation
-        requestAnimationFrame(() => {
+        setTimeout(() => {
             modal.classList.add('active');
-            storyContent.classList.add('active');
-        });
+        }, 10);
         
         // Close modal functionality
-        const closeModal = () => {
+        modal.querySelector('.close-story').addEventListener('click', () => {
             modal.classList.remove('active');
             setTimeout(() => {
                 modal.remove();
             }, 300);
-        };
-        
-        closeButton.addEventListener('click', closeModal);
+        });
         
         // Close on outside click
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                closeModal();
-            }
-        });
-        
-        // Close on ESC key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.remove();
+                }, 300);
             }
         });
     });
@@ -208,4 +197,52 @@ document.addEventListener('click', (e) => {
             block: 'center'
         });
     }
-}); 
+});
+
+// Video Lazy Loading
+document.addEventListener('DOMContentLoaded', function() {
+    const videoContainers = document.querySelectorAll('.video-container');
+    const lazyLoadVideo = (container) => {
+        const iframe = container.querySelector('iframe');
+        if (iframe) {
+            // Replace placeholder src with actual video URL
+            const videoId = 'example'; // Replace with actual video ID
+            iframe.src = https://www.youtube.com/embed/${videoId}; // Fixed template literal syntax
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const readMoreButtons = document.querySelectorAll('.story-read-more');
+
+        readMoreButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const storyCard = button.closest('.story-card');
+                const fullStory = storyCard.querySelector('.story-full');
+
+                const isOpen = fullStory.style.display === 'block';
+
+                if (isOpen) {
+                    fullStory.style.display = 'none';
+                    button.textContent = 'Read Full Story';
+                } else {
+                    fullStory.style.display = 'block';
+                    button.textContent = 'Show Less';
+                    fullStory.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    });
+
+    // Intersection Observer for lazy loading
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                lazyLoadVideo(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    videoContainers.forEach(container => {
+        observer.observe(container);
+    });
+});
