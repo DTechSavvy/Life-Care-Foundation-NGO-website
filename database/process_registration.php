@@ -1,10 +1,12 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Accept');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
 header('Content-Type: application/json');
 
-require_once 'config.php';
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 // Handle preflight OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -12,118 +14,109 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-// Check if the request is POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['success' => false, 'error' => 'Method not allowed']);
-    exit();
-}
-
-// Check content type
-if (!isset($_SERVER["CONTENT_TYPE"]) || stripos($_SERVER["CONTENT_TYPE"], 'application/json') === false) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'error' => 'Content-Type must be application/json']);
-    exit();
-}
+// Include database configuration
+require_once 'config.php';
 
 try {
     // Get POST data
     $input = file_get_contents('php://input');
-    if (empty($input)) {
-        throw new Exception('No input data received');
-    }
-
-    // Log the raw input for debugging
+    
+    // Log raw input for debugging
     error_log("Raw input: " . $input);
-
+    
     // Decode JSON data
     $data = json_decode($input, true);
-    if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
-        throw new Exception('Invalid JSON data: ' . json_last_error_msg());
+    
+    // Check for JSON decode errors
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        throw new Exception('Invalid JSON: ' . json_last_error_msg());
     }
-
-    // Log the decoded data for debugging
+    
+    // Log decoded data
     error_log("Decoded data: " . print_r($data, true));
 
     // Validate required fields
-    $required_fields = ['eventTitle', 'eventDate', 'fullName', 'email', 'phone', 'age', 'availability'];
+    $required_fields = ['event_title', 'event_date', 'full_name', 'email', 'phone', 'age', 'availability'];
     foreach ($required_fields as $field) {
-        if (!isset($data[$field]) || empty($data[$field])) {
+        if (empty($data[$field])) {
             throw new Exception("Missing required field: {$field}");
         }
     }
 
-    // Validate email
-    if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-        throw new Exception('Invalid email format');
-    }
-
-    // Validate age
-    if (!is_numeric($data['age']) || $data['age'] < 18 || $data['age'] > 100) {
-        throw new Exception('Invalid age (must be between 18 and 100)');
-    }
-
-    // Prepare SQL statement
+    // Create the SQL query
     $sql = "INSERT INTO event_registrations (
-        event_title, 
-        event_date, 
-        full_name, 
-        email, 
-        phone, 
-        age, 
-        previous_experience, 
-        availability, 
-        areas_of_interest, 
-        terms_accepted
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
-    
+        event_title,
+        event_date,
+        full_name,
+        email,
+        phone,
+        age,
+        previous_experience,
+        availability,
+        areas_of_interest,
+        terms_accepted,
+        registration_date
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+
+    // Prepare statement
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
-        throw new Exception('Failed to prepare statement: ' . $conn->error);
+        throw new Exception("Database error: " . $conn->error);
     }
-    
+
     // Set default values for optional fields
-    $previous_experience = isset($data['experience']) ? $data['experience'] : '';
-    $areas_of_interest = isset($data['interests']) ? implode(', ', (array)$data['interests']) : '';
-    
+    $previous_experience = isset($data['previous_experience']) ? $data['previous_experience'] : '';
+    $areas_of_interest = isset($data['areas_of_interest']) ? $data['areas_of_interest'] : '';
+    $terms_accepted = isset($data['terms_accepted']) ? $data['terms_accepted'] : 1;
+
     // Bind parameters
     $stmt->bind_param(
-        "sssssisss",
-        $data['eventTitle'],
-        $data['eventDate'],
-        $data['fullName'],
+        "sssssiisis",
+        $data['event_title'],
+        $data['event_date'],
+        $data['full_name'],
         $data['email'],
         $data['phone'],
         $data['age'],
         $previous_experience,
         $data['availability'],
-        $areas_of_interest
+        $areas_of_interest,
+        $terms_accepted
     );
-    
+
     // Execute the statement
     if (!$stmt->execute()) {
-        throw new Exception('Failed to execute statement: ' . $stmt->error);
+        throw new Exception("Failed to save registration: " . $stmt->error);
     }
-    
-    echo json_encode([
-        'success' => true, 
+
+    // Return success response
+    $response = [
+        'success' => true,
         'message' => 'Registration successful',
-        'data' => [
-            'id' => $conn->insert_id,
-            'eventTitle' => $data['eventTitle']
-        ]
-    ]);
+        'id' => $conn->insert_id
+    ];
     
-    $stmt->close();
-    
+    echo json_encode($response);
+
 } catch (Exception $e) {
+    // Log the error
     error_log("Registration error: " . $e->getMessage());
-    http_response_code(500);
-    echo json_encode([
-        'success' => false, 
+    
+    // Return error response
+    $response = [
+        'success' => false,
         'error' => $e->getMessage()
-    ]);
+    ];
+    
+    http_response_code(400);
+    echo json_encode($response);
 }
 
-$conn->close();
+// Close database connection
+if (isset($stmt)) {
+    $stmt->close();
+}
+if (isset($conn)) {
+    $conn->close();
+}
 ?> 
