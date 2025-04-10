@@ -8,10 +8,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Database configuration
-$db_host = 'localhost';
-$db_user = 'root';      // Replace with your MySQL username
-$db_pass = '';          // Replace with your MySQL password
-$db_name = 'ngo_donations';
+$db_host = 'sql100.infinityfree.com';
+$db_user = 'if0_38719579';      // Your MySQL username
+$db_pass = 'lifecare25';          // Your MySQL password
+$db_name = 'if0_38719579_life_care';
 
 try {
     // Create database connection
