@@ -492,29 +492,59 @@
     </section>
     
     <script>
-        function updateCountdowns() {
-            let timers = document.querySelectorAll(".event-timer");
-    
-            timers.forEach(timer => {
-                let eventTime = new Date(timer.getAttribute("data-date")).getTime();
-                let now = new Date().getTime();
-                let timeLeft = eventTime - now;
-    
-                if (timeLeft < 0) {
-                    timer.innerHTML = "<span>Event Started</span>";
-                    return;
-                }
-    
-                timer.querySelector(".days").textContent = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                timer.querySelector(".hours").textContent = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                timer.querySelector(".minutes").textContent = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                timer.querySelector(".seconds").textContent = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRX7GggxQK4gcZe3pJ9_iNHAIPAtW-1SeKWwVq6VBD2SUAjUAgcCagkCmpHj54uQbrZ_E5kimZEOY0e/pubhtml";
+      
+        fetch(sheetURL)
+          .then(res => res.json())
+          .then(events => {
+            const now = new Date();
+            const upcoming = events.filter(event => {
+              const dateTimeStr = `${event.Date}T${event.Time}:00`;
+              return new Date(dateTimeStr) > now;
             });
+      
+            const grid = document.querySelector(".event-grid");
+            grid.innerHTML = upcoming.map(event => {
+              const isoDate = `${event.Date}T${event.Time}:00`;
+              return `
+                <div class="event-card">
+                    <h3 class="event-title">
+                        <a href="/volunteeringpage.html" class="event-link">${event.Title}</a>
+                    </h3>
+                    <p class="event-summary">${event.Description}</p>
+                    <p class="event-date">📅 ${event.Date} | 🕗 ${event.Time}</p>
+                    <time class="event-timer" data-date="${isoDate}">
+                        <div class="time-box"><span class="days">DD</span><small>Days</small></div>
+                        <div class="time-box"><span class="hours">HH</span><small>Hours</small></div>
+                        <div class="time-box"><span class="minutes">MM</span><small>Mins</small></div>
+                        <div class="time-box"><span class="seconds">SS</span><small>Secs</small></div>
+                    </time>
+                </div>`;
+            }).join('');
+            updateCountdowns(); // initialize once loaded
+          });
+      
+        function updateCountdowns() {
+          const timers = document.querySelectorAll(".event-timer");
+          timers.forEach(timer => {
+            const eventTime = new Date(timer.getAttribute("data-date")).getTime();
+            const now = new Date().getTime();
+            const timeLeft = eventTime - now;
+      
+            if (timeLeft < 0) {
+              timer.innerHTML = "<span>Event Started</span>";
+              return;
+            }
+      
+            timer.querySelector(".days").textContent = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            timer.querySelector(".hours").textContent = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            timer.querySelector(".minutes").textContent = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            timer.querySelector(".seconds").textContent = Math.floor((timeLeft % (1000 * 60)) / 1000);
+          });
         }
-    
+      
         setInterval(updateCountdowns, 1000);
-        updateCountdowns();
-    </script>
+      </script>
     <!--Events section ends here-->
 
     <!--gallery section starts here-->
