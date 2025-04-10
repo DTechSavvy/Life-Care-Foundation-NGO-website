@@ -4,11 +4,28 @@ header('Access-Control-Allow-Methods: GET, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 header('Content-Type: application/json');
 
-require_once 'config.php';
-
 // Handle preflight OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
+    exit();
+}
+
+// Database configuration
+$db_host = 'sql100.infinityfree.com';
+$db_user = 'if0_38719579';
+$db_pass = 'lifecare25';
+$db_name = 'if0_38719579_life_care';
+
+// Create connection
+$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+// Check connection
+if ($conn->connect_error) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'error' => 'Database connection failed: ' . $conn->connect_error
+    ]);
     exit();
 }
 
@@ -65,5 +82,6 @@ try {
     ]);
 }
 
+// Close the connection
 $conn->close();
-?> 
+?>
