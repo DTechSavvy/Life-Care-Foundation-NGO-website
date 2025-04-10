@@ -1,50 +1,5 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Form Validation Functions
-    function validateEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
-    function validatePhone(phone) {
-        const phoneRegex = /^\+?[\d\s-]{10,}$/;
-        return phoneRegex.test(phone);
-    }
-
-    function validateAge(age) {
-        return !isNaN(age) && age >= 18 && age <= 100;
-    }
-
-    function validateAvailability(hours) {
-        return !isNaN(hours) && hours >= 1 && hours <= 40;
-    }
-
-    function showError(input, message) {
-        const formGroup = input.closest('.form-group');
-        const existingError = formGroup.querySelector('.error-message');
-        
-        if (!existingError) {
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'error-message';
-            errorDiv.style.color = '#ff3b30';
-            errorDiv.style.fontSize = '0.8rem';
-            errorDiv.style.marginTop = '5px';
-            errorDiv.textContent = message;
-            formGroup.appendChild(errorDiv);
-        }
-        
-        input.style.borderColor = '#ff3b30';
-    }
-
-    function clearError(input) {
-        const formGroup = input.closest('.form-group');
-        const errorDiv = formGroup.querySelector('.error-message');
-        if (errorDiv) {
-            errorDiv.remove();
-        }
-        input.style.borderColor = '';
-    }
-
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -87,6 +42,37 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Form Validation Helper Functions
+    function displayValidationError(field, message) {
+        // Check if error element already exists
+        let errorElement = field.parentNode.querySelector('.validation-error');
+        
+        if (!errorElement) {
+            // Create error element if it doesn't exist
+            errorElement = document.createElement('div');
+            errorElement.className = 'validation-error';
+            errorElement.style.color = '#ff3b30';
+            errorElement.style.fontSize = '0.8rem';
+            errorElement.style.marginTop = '0.3rem';
+            field.parentNode.appendChild(errorElement);
+        }
+        
+        errorElement.textContent = message;
+        
+        // Highlight the field
+        field.style.borderColor = '#ff3b30';
+    }
+
+    function clearValidationErrors() {
+        const errorElements = document.querySelectorAll('.validation-error');
+        errorElements.forEach(element => element.remove());
+        
+        const formFields = document.querySelectorAll('input, select, textarea');
+        formFields.forEach(field => {
+            field.style.borderColor = '';
+        });
+    }
 
     // Countdown Timer Function
     function updateCountdown() {
@@ -148,86 +134,130 @@ document.addEventListener('DOMContentLoaded', function() {
         
         registrationInputs.forEach(input => {
             input.addEventListener('input', function() {
-                clearError(this);
+                // Remove error message for this input only
+                const errorElement = this.parentNode.querySelector('.validation-error');
+                if (errorElement) {
+                    errorElement.remove();
+                }
+                
+                // Reset border color
+                this.style.borderColor = '';
             });
         });
 
         registrationForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+            
+            // Reset previous validation errors
+            clearValidationErrors();
+
+            // Get form data
+            const data = {
+                fullName: this.fullName.value,
+                email: this.email.value,
+                phone: this.phone.value,
+                age: this.age.value,
+                experience: this.experience.value,
+                availability: this.availability.value
+            };
+
+            // Validate form data
             let isValid = true;
             
-            // Clear all previous errors
-            registrationInputs.forEach(input => clearError(input));
-            
-            // Get form data
-            const formData = new FormData(registrationForm);
-            const data = Object.fromEntries(formData.entries());
-            
-            // Validate full name
-            if (!data.fullName || data.fullName.trim().length < 2) {
-                showError(registrationForm.fullName, 'Please enter a valid full name (minimum 2 characters)');
+            // Full Name validation - required, at least 3 characters, only letters and spaces
+            if (!data.fullName || data.fullName.trim().length < 3) {
+                displayValidationError(this.fullName, 'Name must be at least 3 characters');
+                isValid = false;
+            } else if (!/^[A-Za-z\s]+$/.test(data.fullName.trim())) {
+                displayValidationError(this.fullName, 'Name should contain only letters and spaces');
                 isValid = false;
             }
-            
-            // Validate email
-            if (!validateEmail(data.email)) {
-                showError(registrationForm.email, 'Please enter a valid email address');
+
+            // Email validation - required, valid email format
+            if (!data.email || data.email.trim() === '') {
+                displayValidationError(this.email, 'Email is required');
+                isValid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
+                displayValidationError(this.email, 'Please enter a valid email address');
                 isValid = false;
             }
-            
-            // Validate phone
-            if (!validatePhone(data.phone)) {
-                showError(registrationForm.phone, 'Please enter a valid phone number (minimum 10 digits)');
+
+            // Phone validation - required, numeric, proper format
+            if (!data.phone || data.phone.trim() === '') {
+                displayValidationError(this.phone, 'Phone number is required');
+                isValid = false;
+            } else if (!/^\d{10}$/.test(data.phone.replace(/\D/g, ''))) {
+                displayValidationError(this.phone, 'Please enter a valid 10-digit phone number');
                 isValid = false;
             }
-            
-            // Validate age
-            if (!validateAge(data.age)) {
-                showError(registrationForm.age, 'Age must be between 18 and 100');
+
+            // Age validation - required, numeric, between 18-100
+            if (!data.age || data.age.trim() === '') {
+                displayValidationError(this.age, 'Age is required');
+                isValid = false;
+            } else if (isNaN(data.age) || parseInt(data.age) < 18 || parseInt(data.age) > 100) {
+                displayValidationError(this.age, 'Age must be between 18 and 100');
                 isValid = false;
             }
-            
-            // Validate availability
-            if (!validateAvailability(data.availability)) {
-                showError(registrationForm.availability, 'Hours must be between 1 and 40');
+
+            // Availability validation - required, numeric, positive
+            if (!data.availability || data.availability.trim() === '') {
+                displayValidationError(this.availability, 'Availability is required');
+                isValid = false;
+            } else if (isNaN(data.availability) || parseInt(data.availability) <= 0) {
+                displayValidationError(this.availability, 'Please enter valid hours (greater than 0)');
                 isValid = false;
             }
-            
-            // Validate interests
-            const interests = Array.from(registrationForm.interests.selectedOptions).map(option => option.value);
-            if (interests.length === 0) {
-                showError(registrationForm.interests, 'Please select at least one area of interest');
+
+            // Interests validation - at least one interest must be selected
+            if (this.interests.selectedOptions.length === 0) {
+                displayValidationError(this.interests, 'Please select at least one area of interest');
                 isValid = false;
             }
-            
-            // Validate terms
-            if (!data.terms) {
-                showError(registrationForm.terms, 'You must agree to the terms and conditions');
+
+            // Terms and conditions validation
+            if (!this.terms.checked) {
+                displayValidationError(this.terms, 'You must agree to the terms and conditions');
                 isValid = false;
             }
-            
+
             if (!isValid) {
                 return;
             }
             
-            // Add event details to the data
-            const eventTitle = modalEventTitle.textContent;
-            const eventDate = modalEventDate.textContent.replace('Date: ', '');
-            
-            // Format the data object
-            const formattedData = {
-                eventTitle: eventTitle,
-                eventDate: eventDate,
-                fullName: data.fullName.trim(),
-                email: data.email.trim(),
-                phone: data.phone.trim(),
-                age: parseInt(data.age),
-                experience: (data.experience || '').trim(),
-                availability: parseInt(data.availability),
-                interests: Array.from(registrationForm.interests.selectedOptions).map(option => option.value)
-            };
-            
             try {
+                // Add event details to the data
+                const modalEventTitle = document.querySelector('#modalEventTitle');
+                const modalEventDate = document.querySelector('#modalEventDate');
+                
+                if (!modalEventTitle || !modalEventDate) {
+                    throw new Error('Could not find event details');
+                }
+                
+                const eventTitle = modalEventTitle.textContent || '';
+                const eventDate = modalEventDate.textContent.replace('Date: ', '') || '';
+                
+                // Format the data object
+                const formattedData = {
+                    event_title: eventTitle.trim(),
+                    event_date: eventDate.trim(),
+                    full_name: data.fullName.trim(),
+                    email: data.email.trim(),
+                    phone: data.phone.replace(/\D/g, ''), // Remove non-digits
+                    age: parseInt(data.age),
+                    previous_experience: (data.experience || '').trim(),
+                    availability: parseInt(data.availability),
+                    areas_of_interest: Array.from(this.interests.selectedOptions).map(option => option.value).join(', '),
+                    terms_accepted: this.terms.checked ? 1 : 0
+                };
+                
+                // Validate required fields before sending
+                if (!formattedData.event_title || !formattedData.event_date) {
+                    throw new Error('Event details are missing');
+                }
+                
+                console.log('Sending data:', formattedData); // Debug log
+                
                 const response = await fetch('process_registration.php', {
                     method: 'POST',
                     headers: {
@@ -237,27 +267,36 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: JSON.stringify(formattedData)
                 });
 
-                // Log the response for debugging
-                console.log('Response status:', response.status);
+                console.log('Response status:', response.status); // Debug log
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
                 const responseText = await response.text();
-                console.log('Response text:', responseText);
-
-                // Try to parse the response as JSON
+                console.log('Response text:', responseText); // Debug log
+                
                 let result;
                 try {
                     result = JSON.parse(responseText);
+                    if (!result || typeof result !== 'object') {
+                        throw new Error('Invalid response format');
+                    }
                 } catch (e) {
-                    console.error('Failed to parse JSON response:', e);
-                    throw new Error('Invalid server response');
+                    console.error('Failed to parse response:', e, responseText);
+                    throw new Error('Server returned invalid response. Please try again.');
                 }
                 
                 if (result.success) {
                     alert('Thank you for registering! We will contact you soon.');
-                    modal.style.display = 'none';
-                    document.body.style.overflow = ''; // Restore scrolling
-                    registrationForm.reset();
+                    const modal = document.querySelector('#registrationModal');
+                    if (modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = ''; // Restore scrolling
+                    }
+                    this.reset();
                 } else {
-                    throw new Error(result.error || 'Registration failed');
+                    throw new Error(result.error || 'Registration failed. Please try again.');
                 }
             } catch (error) {
                 alert('Error: ' + error.message);
@@ -267,73 +306,102 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Real-time validation for contact form
-    const contactForm = document.querySelector('.contact-form');
+    const contactForm = document.getElementById('contactForm');
     if (contactForm) {
+        // Clear validation errors when input changes
         const contactInputs = contactForm.querySelectorAll('input, textarea');
-        
         contactInputs.forEach(input => {
             input.addEventListener('input', function() {
-                clearError(this);
+                const errorElement = this.parentNode.querySelector('.validation-error');
+                if (errorElement) {
+                    errorElement.remove();
+                }
+                this.style.borderColor = '';
             });
         });
 
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
+        // Handle form submission
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form from submitting normally
+            
+            // Clear any existing validation errors
+            clearValidationErrors();
+
+            // Get form data
+            const formData = {
+                name: this.querySelector('[name="name"]').value,
+                email: this.querySelector('[name="email"]').value,
+                subject: this.querySelector('[name="subject"]').value,
+                message: this.querySelector('[name="message"]').value
+            };
+
+            // Validate form data
             let isValid = true;
             
-            // Clear all previous errors
-            contactInputs.forEach(input => clearError(input));
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
-            
-            // Validate name
-            if (!data.name || data.name.trim().length < 2) {
-                showError(contactForm.name, 'Please enter a valid name (minimum 2 characters)');
+            // Name validation
+            if (!formData.name || formData.name.trim().length < 3) {
+                displayValidationError(this.querySelector('[name="name"]'), 'Name must be at least 3 characters');
+                isValid = false;
+            } else if (!/^[A-Za-z\s]+$/.test(formData.name.trim())) {
+                displayValidationError(this.querySelector('[name="name"]'), 'Name should contain only letters and spaces');
                 isValid = false;
             }
-            
-            // Validate email
-            if (!validateEmail(data.email)) {
-                showError(contactForm.email, 'Please enter a valid email address');
+
+            // Email validation
+            if (!formData.email || formData.email.trim() === '') {
+                displayValidationError(this.querySelector('[name="email"]'), 'Email is required');
+                isValid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+                displayValidationError(this.querySelector('[name="email"]'), 'Please enter a valid email address');
                 isValid = false;
             }
-            
-            // Validate subject
-            if (!data.subject || data.subject.trim().length < 3) {
-                showError(contactForm.subject, 'Please enter a valid subject (minimum 3 characters)');
+
+            // Subject validation
+            if (!formData.subject || formData.subject.trim().length < 5) {
+                displayValidationError(this.querySelector('[name="subject"]'), 'Subject must be at least 5 characters');
                 isValid = false;
             }
-            
-            // Validate message
-            if (!data.message || data.message.trim().length < 10) {
-                showError(contactForm.message, 'Please enter a message (minimum 10 characters)');
+
+            // Message validation
+            if (!formData.message || formData.message.trim().length < 10) {
+                displayValidationError(this.querySelector('[name="message"]'), 'Message must be at least 10 characters');
                 isValid = false;
             }
-            
-            if (!isValid) {
-                return;
-            }
-            
-            try {
-                // Store in localStorage
-                const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
-                messages.push({
-                    ...data,
-                    timestamp: new Date().toISOString()
-                });
-                localStorage.setItem('contactMessages', JSON.stringify(messages));
-                
-                // Show success message
-                alert('Thank you for your message! We will get back to you soon.');
-                contactForm.reset();
-                
-                // Log the message (for testing)
-                console.log('Message saved:', data);
-            } catch (error) {
-                alert('Error sending message. Please try again.');
-                console.error('Contact form error:', error);
+
+            if (isValid) {
+                try {
+                    // Format the data
+                    const messageData = {
+                        name: formData.name.trim(),
+                        email: formData.email.trim(),
+                        subject: formData.subject.trim(),
+                        message: formData.message.trim(),
+                        date: new Date().toISOString()
+                    };
+
+                    // Store in localStorage
+                    const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+                    messages.push(messageData);
+                    localStorage.setItem('contactMessages', JSON.stringify(messages));
+
+                    // Show success message
+                    alert('Thank you for your message! We will get back to you soon.');
+                    
+                    // Reset the form
+                    this.reset();
+                    
+                    // Log for debugging
+                    console.log('Message saved:', messageData);
+                } catch (error) {
+                    console.error('Error saving message:', error);
+                    alert('Sorry, there was an error sending your message. Please try again.');
+                }
+            } else {
+                // Scroll to the first error
+                const firstError = document.querySelector('.validation-error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             }
         });
     }
