@@ -93,8 +93,9 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 ```
 
 
-### 🌍 Hosting Details
-  rontend: Deployed using Render
+## 🌍 Hosting Details
+
+Frontend: Deployed using Render
 
 Just upload the frontend folder or connect your GitHub repo.
 
