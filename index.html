@@ -8,12 +8,26 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-      
-        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
  
     </head>
     <body>
+         <div id="splash">
+            <img src="/images/gallery/Screenshot_2025-04-23_142148-removebg-preview.png" alt="Life Care Foundation" />
+            <h1 class="fade-in-text">Welcome to Life Care Foundation</h1>
+            <p class="fade-in-sub">"Empowering Lives, Enriching Futures."</p>
+          </div>
+        
+          <script>
+            window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("splash").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+  }, 10000); // 3 seconds
+});
+
+          </script>
         <!-- Content -->
          <div class="fullcontainer banner" id="homesection">
         <header>
