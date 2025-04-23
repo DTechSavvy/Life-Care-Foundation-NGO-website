@@ -26,7 +26,75 @@ p {
     font-size: 14px;
     line-height: 26px;
 }
-
+#splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: slideOut 1s ease forwards;
+    animation-delay: 5s;
+  }
+  
+  #splash img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease forwards;
+  }
+  
+  .fade-in-text {
+    font-size: 32px;
+    color: #d43c18;
+    margin: 10px 0;
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards;
+    animation-delay: 1s;
+  }
+  
+  .fade-in-sub {
+    font-size: 18px;
+    color: #333;
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards;
+    animation-delay: 2.5s;
+  }
+  
+  /* Animations */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideOut {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 .fullcontainer {
     width: 100%;
     min-height: auto;
