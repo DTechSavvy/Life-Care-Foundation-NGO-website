@@ -33,8 +33,8 @@ The NGO website contains the following main modules:
 
 ## 🔗 Live Website
 
-You can visit the live site here: **[Live Demo](https://your-render-url.render.com)**  
-*(Replace this link with your actual Render URL)*
+You can visit the live site here: **[Live Demo](https://ngo-website-k1df.onrender.com/)**  
+
 
 ---
 
