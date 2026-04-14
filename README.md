@@ -97,11 +97,8 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 Frontend: Deployed using Render
 
-Just upload the frontend folder or connect your GitHub repo.
-
 Backend + DB: Deployed using InfinityFree
 
-Upload PHP files and configure database under MySQL section.
 
 ## 💬 Contact
   Feel free to reach us at: info@lifecare_fdn.org
